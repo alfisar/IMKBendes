@@ -1,0 +1,68 @@
+body {font-family: 'Work Sans', sans-serif !important;}
+h1, h2, h3, h4, h5, h6 { font-family: 'Work Sans' , sans-serif !important;   font-weight: 400;}
+
+#masuk{
+    background-color:#fafbfc; 
+    transition: 0.3s ease-out;
+    cursor: pointer;
+    border: 1px solid #dedede;
+    color: #7d97ad;
+}
+
+#masuk:hover{
+    box-shadow: 0px 4px 10px #dedede;
+    transition: 0.3s ease-out;
+}
+
+#daftar{
+    background-color:#fafbfc; 
+    transition: 0.3s ease-out;
+    cursor: pointer;
+    border: 1px solid #dedede;
+    color: #7d97ad;
+}
+
+#daftar:hover{
+    box-shadow: 0px 4px 10px #dedede;
+    transition: 0.3s ease-out;
+}
+
+.masukDiv{
+    background-color: white !important;
+    box-shadow: none !important;
+    border: none !important;
+    color: #2e3d49 !important;
+}
+
+.daftarDiv{
+    background-color: white !important;
+    box-shadow: none !important;
+    border: none !important;
+    color: #2e3d49 !important;
+}
+
+.formcard{
+    box-shadow: 2px 2px 3px 0 rgba(117, 124, 129, 0.12);
+    background-color: white;
+}
+
+.brand {
+    position: absolute;
+    left: 50%;
+    margin-left: -50px !important;  /* 50% of your logo width */
+    display: block;
+}
+
+.nav-form{
+    background-color: white;
+    box-shadow: 0 5px 15px 0 rgba(46, 61, 73, 0.12);
+}
+
+.nav-form a{
+    color: #000000;
+}
+
+.nav-form a:hover{
+    color: #000000;
+    text-decoration: none;
+}
