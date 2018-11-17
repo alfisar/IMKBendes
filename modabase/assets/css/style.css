@@ -1071,7 +1071,7 @@ sidebar navigation
 }
 
 .sidebar-nav>ul>li.active>a i {
-    color#4886ff;
+    color: #4886ff;
 }
 
 .sidebar-nav .waves-effect {
@@ -1562,7 +1562,7 @@ left:0;
 }
 
 .app-search input {
-    padding:;
+    padding: 0;
 	border:0 none;
     border-radius: 0px;
 	text-indent:20px;
@@ -2032,14 +2032,14 @@ ul#themecolors li a.working:before {
 .green-dark-theme {
     background: #263238;
     /* Old browsers */
-    background: -moz-linear-gradient(left, #263238 0%, #263238 23%, #7ad83523%, #7ad83599%);
+    background: -moz-linear-gradient(left, #263238 0%, #263238 23%, #7ad835 23%, #7ad835 99%);
     /* FF3.6-15 */
-    background: -webkit-linear-gradient(left, #263238 0%, #263238 23%, #00c292 23%, #7ad83599%);
+    background: -webkit-linear-gradient(left, #263238 0%, #263238 23%, #00c292 23%, #7ad835 99%);
     /* Chrome10-25,Safari5.1-6 */
     background: -webkit-gradient(linear, left top, right top, from(#263238), color-stop(23%, #263238), color-stop(23%, #24d2b5), color-stop(99%, #24d2b5));
-    background: -webkit-linear-gradient(left, #263238 0%, #263238 23%, #7ad83523%, #7ad83599%);
-    background: -o-linear-gradient(left, #263238 0%, #263238 23%, #7ad83523%, #7ad83599%);
-    background: linear-gradient(to right, #263238 0%, #263238 23%, #7ad83523%, #7ad83599%);
+    background: -webkit-linear-gradient(left, #263238 0%, #263238 23%, #7ad835 23%, #7ad835 99%);
+    background: -o-linear-gradient(left, #263238 0%, #263238 23%, #7ad835 23%, #7ad835 99%);
+    background: linear-gradient(to right, #263238 0%, #263238 23%, #7ad835 23%, #7ad835 99%);
 }
 
 .yellow-dark-theme {
@@ -4474,7 +4474,8 @@ Table- editable table
 
 .paging_simple_numbers .pagination .paginate_button {
     padding: 0px;
-    background: #none;  color:#666666
+    background: none;  
+    color:#666666;
 }
 
 .paging_simple_numbers .pagination .paginate_button:hover {
@@ -5354,7 +5355,7 @@ padding:0 1.25rem;
 .fc-event.bg-purple:hover{background:#b554f9!important; }
 .fc-event.bg-warning{background:none!important; border-bottom:2px solid #ffc107}
 .fc-event.bg-success{background:none!important; border-bottom:2px solid #7ad835 }
-.fc-even:hover .fc-title{color: color: #000000 !important;;}
+.fc-even:hover .fc-title{color: #000000 !important;}
 .calendar-event {
     cursor: move;
     margin: 10px 5px 0 0;
