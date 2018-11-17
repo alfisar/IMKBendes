@@ -6981,3 +6981,7 @@ border-color: rgba(120, 130, 140, 0.13);
     left: 50%;
     transform: translate(-50%,-50%)
 }
+
+.nav-shadow{
+    border-bottom: 1px solid grey;
+}
