@@ -196,7 +196,7 @@
         <nav class="sidebar-nav">
           <ul id="sidebarnav">
             <li class="clearfix"></li>
-            <li class="active"> <a class="waves-effect waves-dark" href="#" aria-expanded="false"><i class="flaticon-desktop-computer-screen-with-rising-graph"></i><span class="hide-menu">Dashboard</span></a>
+            <li> <a class="waves-effect waves-dark" href="#" aria-expanded="false"><i class="flaticon-desktop-computer-screen-with-rising-graph"></i><span class="hide-menu">Dashboard</span></a>
             </li>
             <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="flaticon-forms"></i><span class="hide-menu">Materi</span></a>
               <ul aria-expanded="false" class="collapse">
@@ -229,59 +229,53 @@
       <div class="container-fluid">
         <div class="row page-titles">
           <div class="col-md-5 col-sm-12 align-self-center">
-            <h3 class="weight-500 m-0">Dashboard</h3>
+            <h2 class="weight-500 m-0">Profil</h2>
           </div>
         </div>
           <!--tabpanel-->
-          <div class="tab-pane p-0 active" id="pro-statistics" role="tabpanel">
-            <div class="row">
-              <div class="col-lg-4 col-md-6">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="p-10 no-block text-center">
-                      <div class="align-slef-center">
-                        <h2 class="m-b-0">68%</h2>
-                        <h6 class="text-light m-b-25">Tasks done</h6>
-                      </div>
-                      <div class="progress">
-                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%; height:5px;"> <span class="sr-only">80% Complete</span></div>
-                      </div>
+        <div class="row">
+          <div class="col-md-11">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-3 m-b-20 text-center">
+                      <img src="assets/imgs/users/profile-img.jpg" class="img-fluid"  alt="" title="" >
+                      <button class="btn btn-primary w-100 mt-3 btn-rounded" type="file">Unggah gambar</button>
                     </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="p-10 no-block text-center">
-                      <div class="align-slef-center">
-                        <h2 class="m-b-0">21%</h2>
-                        <h6 class="text-light m-b-25">In process Tasks</h6>
-                      </div>
-                      <div class="progress">
-                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width:30%; height:5px;"> <span class="sr-only">30% Complete</span></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="p-10 no-block text-center">
-                      <div class="align-slef-center">
-                        <h2 class="m-b-0">11%</h2>
-                        <h6 class="text-light m-b-25">Tasks done</h6>
-                      </div>
-                      <div class="progress">
-                        <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:20%; height:5px;"> <span class="sr-only">20% Complete</span></div>
-                      </div>
+                    <div class="col-md-9">
+                        <form class="form">
+                            <div class="form-group m-b-10 row">
+                              <label class="col-12 col-form-label">Nama</label>
+                              <div class="col-12">
+                                <input class="form-control" type="text" placeholder="Parse name here" required>
+                              </div>
+                            </div>
+                            <div class="form-group row m-b-10">
+                                <label class="col-12 col-form-label">Email</label>
+                                <div class="col-12">
+                                  <input class="form-control" type="text" placeholder="Parse email here" required>
+                                </div>
+                            </div>
+                            <div class="form-group row m-b-10">
+                                <label class="col-12 col-form-label">Lokasi</label>
+                                <div class="col-12">
+                                  <input class="form-control" type="text" placeholder="Lokasi" required>
+                                </div>
+                            </div>
+                            <div class="form-group row m-b-10">
+                              <label class="col-12 col-form-label">Tentang saya</label>
+                              <div class="col-12">
+                                <textarea class="form-control" style="resize: vertical"></textarea>
+                              </div>
+                            </div>
+                            <button class="btn btn-danger mt-3" type="submit">Perbarui profil</button>
+                          </form>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+        </div>
           <!--tabpanel-->
         </div>
       </div>
