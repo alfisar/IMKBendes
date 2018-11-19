@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    include 'dataprofil.php';
+    if (!isset($_POST['email']) && !isset($_SESSION['nama'])) {
+      header("Location: index-sign.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -160,7 +167,7 @@
                         <div class="u-img"><img src="assets/imgs/users/user-50x50.jpg" alt="user"></div>
                         <div class="clearfix"></div>
                         <div class="u-text">
-                          <h4>Mason Vox</h4>
+                          <h4><?php echo $data['namad']?></h4>
                         </div>
                       </div>
                     </li>
@@ -168,7 +175,7 @@
                     <li><a href="index-profil.php"><i class="fas fa-user mr-1"></i> My Profile</a></li>
                     <li><a href="#"><i class="fas fa-cog mr-1"></i> Settings</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="logout.php"><i class="fas fa-sign-in-alt mr-1"></i> Logout</a></li>
+                    <li><a href="Logout.php"><i class="fas fa-sign-in-alt mr-1"></i> Logout</a></li>
                   </ul>
                 </div>
               </li>
@@ -244,29 +251,29 @@
                       <!-- <button class="btn btn-primary w-100 mt-3 btn-rounded" for="file">Unggah gambar</button> -->
                     </div>
                     <div class="col-md-9">
-                        <form class="form">
+                        <form class="form" method="POST" action="submitdata.php">
                             <div class="form-group m-b-10 row">
                               <label class="col-12 col-form-label">Nama</label>
                               <div class="col-12">
-                                <input class="form-control" type="text" placeholder="Parse name here" required>
+                                <input id="nama" class="form-control" type="text" required>
                               </div>
                             </div>
                             <div class="form-group row m-b-10">
                                 <label class="col-12 col-form-label">Email</label>
                                 <div class="col-12">
-                                  <input class="form-control" type="text" placeholder="Parse email here" required>
+                                  <input class="form-control" type="text" id = 'email' name="email" required>
                                 </div>
                             </div>
                             <div class="form-group row m-b-10">
                                 <label class="col-12 col-form-label">Lokasi</label>
                                 <div class="col-12">
-                                  <input class="form-control" type="text" placeholder="Lokasi" required>
+                                  <input class="form-control" type="text" id = 'lokasi' name="lokasi" required>
                                 </div>
                             </div>
                             <div class="form-group row m-b-10">
                               <label class="col-12 col-form-label">Tentang saya</label>
                               <div class="col-12">
-                                <textarea class="form-control" style="resize: vertical"></textarea>
+                                <textarea class="form-control" style="resize: vertical" id="tentang" name="tentang" ></textarea>
                               </div>
                             </div>
                             <button class="btn btn-danger mt-3" type="submit">Perbarui profil</button>
@@ -330,6 +337,10 @@ $('.panel-group').on('shown.bs.collapse', toggleIcon);
 <script src="plugins/vendors/datatables/jquery.dataTables.min.js"></script>
 <script>
    $(function() {
+        $('#nama').val('<?php echo $data['namad'] ?>'+' <?php echo $data['namab'] ?>');
+        $('#email').val('<?php echo $data['email'] ?>');
+        $('#lokasi').val('<?php echo $data['lokasi']?>');
+        $('#tentang').val('<?php echo $data['tentang']?>');
        $('#myTable').DataTable();
            var table = $('#example').DataTable({
               "columnDefs": [{

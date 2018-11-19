@@ -1,8 +1,9 @@
 <?php 
     session_start();
-     if (!isset($_POST['email']) && !isset($_SESSION['nama'])) {
+      include 'dataprofil.php';
+      if (!isset($_POST['email']) && !isset($_SESSION['nama'])) {
       header("Location: index-sign.php");
-    }
+      }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -168,7 +169,7 @@
                         <div class="u-img"><img src="assets/imgs/users/user-50x50.jpg" alt="user"></div>
                         <div class="clearfix"></div>
                         <div class="u-text p-0 pt-3">
-                          <h4><?php echo $_SESSION['nama']?></h4>
+                          <h4><?php echo $data['namad']?></h4>
                         </div>
                       </div>
                     </li>

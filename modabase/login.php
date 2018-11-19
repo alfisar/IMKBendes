@@ -6,6 +6,8 @@
 		$data = mysqli_fetch_array($query);
 		if ($data['email']==$_POST['email'] && $data['password']==$_POST['pass'] && $_POST['email']!=""){
 			$_SESSION['nama'] = $data['namad'];
+			$_SESSION['namab'] = $data['namab'];
+			$_SESSION['email'] = $data['email'];
 			header("Location: index-dashboard.php");
 		}
 		else{

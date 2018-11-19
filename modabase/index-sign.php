@@ -1,8 +1,8 @@
 <?php 
 	session_start();
-     if (isset($_SESSION['nama'])) {
+    if (isset($_SESSION['nama'])) {
       header("Location: index-dashboard.php");
-    }
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
