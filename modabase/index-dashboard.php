@@ -1,7 +1,7 @@
 <?php 
     session_start();
       include 'dataprofil.php';
-      if (!isset($_POST['email']) && !isset($_SESSION['nama'])) {
+      if (!isset($_POST['email']) && !isset($_SESSION['email'])) {
       header("Location: index-sign.php");
       }
 ?>
