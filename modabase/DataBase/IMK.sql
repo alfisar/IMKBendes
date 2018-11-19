@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 17, 2018 at 06:16 PM
+-- Generation Time: Nov 19, 2018 at 03:09 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -29,13 +29,30 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `akun` (
-  `username` varchar(20) NOT NULL,
+  `email` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
-  `nama` varchar(20) NOT NULL,
+  `namad` varchar(20) NOT NULL,
+  `namab` varchar(20) NOT NULL,
   `umur` int(11) NOT NULL,
   `gender` char(1) NOT NULL,
   `alamat` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `akun`
+--
+
+INSERT INTO `akun` (`email`, `password`, `namad`, `namab`, `umur`, `gender`, `alamat`) VALUES
+('admin@gmail.com', 'as', 'as', 'as', 0, '', ''),
+('admin@gmail.com', 'asd', 'asd', 'asd', 0, '', ''),
+('alfisar@gmail.com', 'asd', 'asdasd', 'asdasd', 0, '', ''),
+('alfisar589@gmail.com', 'as', 'asdsa', 'asdasdsa', 0, '', ''),
+('alfisar@gmail.com', 'aaa', 'aaaa', 'aaaa', 0, '', ''),
+('admin@gmail.com', 'as', 'asdsadsa', 'asdasd', 0, '', ''),
+('alfisar589@gmail.com', 'alfisarr', 'alfisar', 'rachman', 0, '', ''),
+('asdasdsad@gmail.com', 'as', 'asdasdsa', 'asdasdsa', 0, '', ''),
+('asdasdsad@gmail.com', 'ass', 'asdsad', 'asdsad', 0, '', ''),
+('yeaboi1945@gmail.com', 'yeaboi', 'yeaboi', '1945', 0, '', '');
 
 -- --------------------------------------------------------
 
