@@ -1,3 +1,6 @@
+<?php 
+    echo "<script> alert('haha'); </script>";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,6 +77,11 @@
 					<p class="pb-4">Belajar Pemodelan Basis Data bersama Modabase, raih prestasimu dengan nilai tertinggi dikelas!
 					</p>
 			<form method="POST" action="registrasi.php">
+                <?php 
+                    if (!empty($_SESSION['i'])) {
+							echo "<div class='alert alert-danger'> Registrasi Gagal</div>";
+						}
+                ?>
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<input type="text" class="form-control" name="fname" id="firstName" placeholder="Nama depan" required>
@@ -100,6 +108,11 @@
 					<h2 class="mt-2 weight-300">Masuk ke akun modabase anda</h2>
 					<p class="pb-4">Belajar Pemodelan Basis Data bersama Modabase, raih prestasimu dengan nilai tertinggi dikelas!
 				<form method="POST" action="login.php">
+                    <?php 
+                        if (!empty($_SESSION['j'])) {
+							echo "<div class='alert alert-danger'> email atau password anda salah</div>";
+						}
+                    ?>
 						<div class="form-group">
 							<input type="email" class="form-control" name="email" id="inputEmail" placeholder="Alamat Surel" required>
 						</div>

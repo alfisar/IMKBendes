@@ -11,7 +11,7 @@
 <meta name="author" content="Modabase">
 <!-- Favicon icon -->
 <link rel="icon" type="image/png" sizes="16x16" href="assets/imgs/favicon.png">
-<title>Admin Mintone - Bootstrap 4 Admin Template</title>
+<title>Modabase - E-Learning Pemodelan Basis data</title>
 <!-- Bootstrap Core CSS -->
 <link href="plugins/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="plugins/vendors/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
@@ -73,44 +73,54 @@
         <!-- End Logo -->
         <!-- ============================================================== -->
         <div class="top-bar-main">
-            <!-- ============================================================== -->
-            <!-- toggle and nav items -->
-            <!-- ============================================================== -->
-            <div class="float-left">
-              <ul class="navbar-nav">
-                <li class="nav-item "><a class="nav-link navbar-toggler navbar-top-on sidebartoggler waves-effect waves-dark float-right" href="javascript:void(0)"><span class="navbar-toggler-icon"></span></a></li>
-                <!-- ============================================================== -->
-                <!-- Search -->
-                <!-- ============================================================== -->
-                <!-- <li class="nav-item hidden-xs-down app-search">
-                  <input type="text" class="form-control float-left" placeholder="Type for search...">
-                </li> -->
-                <li class="nav-item hidden-xs-down"> <a class="nav-link navbar-toggler sidebartoggler hidden-xs-down waves-effect waves-dark float-right" href="javascript:void(0)"><span class="navbar-toggler-icon"></span></a> </li>
-              </ul>
-            </div>
-            <!-- ============================================================== -->
-            <!-- User profile and search -->
-            <!-- ============================================================== -->
-            <div class="float-right pr-3">
-              <ul class="navbar-nav my-lg-0 float-right">
-                <!-- ============================================================== -->
-                <!-- Comment -->
-                <!-- ============================================================== -->
-                <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-bell"></i>
-                  <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right mailbox animated fadeIn">
-                    <ul>
-                      <li>
-                        <div class="drop-title">Anda punya <span class="highlighted">3 notifikasi</span> baru</div>
-                      </li>
-                      <li>
-                        <div class="message-center">
-                          <!-- Message -->
-                          <a href="#">
+          <!-- ============================================================== -->
+          <!-- toggle and nav items -->
+          <!-- ============================================================== -->
+          <div class="float-left">
+            <ul class="navbar-nav">
+              <li class="nav-item "><a class="nav-link navbar-toggler navbar-top-on sidebartoggler waves-effect waves-dark float-right" href="javascript:void(0)"><span class="navbar-toggler-icon"></span></a></li>
+              <!-- ============================================================== -->
+              <!-- Search -->
+              <!-- ============================================================== -->
+              <!-- <li class="nav-item hidden-xs-down app-search">
+                <input type="text" class="form-control float-left" placeholder="Type for search...">
+              </li> -->
+              <li class="nav-item hidden-xs-down"> <a class="nav-link navbar-toggler sidebartoggler hidden-xs-down waves-effect waves-dark float-right" href="javascript:void(0)"><span class="navbar-toggler-icon"></span></a> </li>
+            </ul>
+          </div>
+          <!-- ============================================================== -->
+          <!-- User profile and search -->
+          <!-- ============================================================== -->
+          <div class="float-right pr-3">
+            <ul class="navbar-nav my-lg-0 float-right">
+              <!-- ============================================================== -->
+              <!-- Comment -->
+              <!-- ============================================================== -->
+              <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-bell"></i>
+                <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right mailbox animated fadeIn">
+                  <ul>
+                    <li>
+                      <div class="drop-title">Anda punya <span class="highlighted">3 notifikasi</span> baru</div>
+                    </li>
+                    <li>
+                      <div class="message-center">
+                        <!-- Message -->
+                        <a href="#">
+                          <div class="row">
+                              <div class="col-9">
+                                  <div class="mail-content">Alisha menyukai komentar anda</div>
+                              </div>
+                              <div class="col-3">
+                                  <span class="float-right text-light">11.08.2018</span>
+                              </div>
+                          </div>
+                        </a>
+                        <a href="#">
                             <div class="row">
                                 <div class="col-9">
-                                    <div class="mail-content">Alisha menyukai komentar anda</div>
+                                    <div class="mail-content">Bryan berkomentar pada Diskusi: attribut</div>
                                 </div>
                                 <div class="col-3">
                                     <span class="float-right text-light">11.08.2018</span>
@@ -120,64 +130,52 @@
                           <a href="#">
                               <div class="row">
                                   <div class="col-9">
-                                      <div class="mail-content">Bryan berkomentar pada Diskusi: attribut</div>
+                                      <div class="mail-content">Alisha menyukai komentar anda</div>
                                   </div>
                                   <div class="col-3">
                                       <span class="float-right text-light">11.08.2018</span>
                                   </div>
                               </div>
                             </a>
-                            <a href="#">
-                                <div class="row">
-                                    <div class="col-9">
-                                        <div class="mail-content">Alisha menyukai komentar anda</div>
-                                    </div>
-                                    <div class="col-3">
-                                        <span class="float-right text-light">11.08.2018</span>
-                                    </div>
-                                </div>
-                              </a>
-                          
-                       
+                      </div>
+                    </li>
+                    <li> <a class="nav-link text-center" href="index-notif.html">Lihat semua notifikasi </a> </li>
+                  </ul>
+                </div>
+              </li>
+              <!-- ============================================================== -->
+              <!-- End Comment -->
+              <!-- ============================================================== -->
+              <!-- ============================================================== -->
+              <!-- End mega menu -->
+              <!-- ============================================================== -->
+              <!-- ============================================================== -->
+              <!-- Profile -->
+              <!-- ============================================================== -->
+              <li class="nav-item dropdown u-pro"> <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/imgs/users/user-50x50.jpg" alt="user" class="" /></a>
+                <div class="dropdown-menu dropdown-menu-right animated fadeIn">
+                  <ul class="dropdown-user">
+                    <li class="text-center">
+                      <div class="dw-user-box">
+                        <div class="u-img"><img src="assets/imgs/users/user-50x50.jpg" alt="user"></div>
+                        <div class="clearfix"></div>
+                        <div class="u-text">
+                          <h4>Mason Vox</h4>
                         </div>
-                      </li>
-                      <li> <a class="nav-link text-center" href="index-notif.html">Lihat semua notifikasi </a> </li>
-                    </ul>
-                  </div>
-                </li>
-                <!-- ============================================================== -->
-                <!-- End Comment -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- End mega menu -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Profile -->
-                <!-- ============================================================== -->
-                <li class="nav-item dropdown u-pro"> <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/imgs/users/user-50x50.jpg" alt="user" class="" /></a>
-                  <div class="dropdown-menu dropdown-menu-right animated fadeIn">
-                    <ul class="dropdown-user">
-                      <li class="text-center">
-                        <div class="dw-user-box">
-                          <div class="u-img"><img src="assets/imgs/users/user-50x50.jpg" alt="user"></div>
-                          <div class="clearfix"></div>
-                          <div class="u-text">
-                            <h4>Mason Vox</h4>
-                          </div>
-                        </div>
-                      </li>
-                      <li role="separator" class="divider"></li>
-                      <li><a href="index-dashboard.php"><i class="fas fa-user mr-1"></i> My Profile</a></li>
-                      <li><a href="#"><i class="fas fa-cog mr-1"></i> Settings</a></li>
-                      <li role="separator" class="divider"></li>
-                      <li><a href="Logout.php"><i class="fas fa-sign-in-alt mr-1"></i> Logout</a></li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="clearfix"></div>
+                      </div>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="index-profil.php"><i class="fas fa-user mr-1"></i> My Profile</a></li>
+                    <li><a href="#"><i class="fas fa-cog mr-1"></i> Settings</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="logout.php"><i class="fas fa-sign-in-alt mr-1"></i> Logout</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
           </div>
+          <div class="clearfix"></div>
+        </div>
       </nav>
     </div>
   </header>
@@ -202,7 +200,7 @@
             </li>
             <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="flaticon-forms"></i><span class="hide-menu">Materi</span></a>
               <ul aria-expanded="false" class="collapse">
-                <li><a href="index-materi.html#pengenalan">1.Pengenalan</a></li>
+                  <li><a href="index-materi.html#pengenalan">1.Pengenalan</a></li>
                   <li><a href="index-materi.html#atribut">2.Atribut</a></li>
                   <li><a href="index-materi.html#kardinalitas">3.Kardinalitas</a></li>
                   <li><a href="index-materi.html#entitas">4.Entitas</a></li>
@@ -210,7 +208,7 @@
                   <li><a href="index-materi.html#generalisasi">6.Generalisasi</a></li>
               </ul>
             </li>
-            <li><a href="#" class="active"><i class="flaticon-pencil-edit-button"></i><span class="hide-menu">Soal</span></a></li>
+            <li><a href="index-soal.html"><i class="flaticon-pencil-edit-button"></i><span class="hide-menu">Soal</span></a></li>
             <li><a href="index-diskusi.html"><i class="flaticon-speech"></i><span class="hide-menu">Diskusi</span></a></li>
           </ul>
         </nav>
@@ -224,58 +222,63 @@
     <!-- ============================================================== -->
     <!-- Page wrapper  -->
     <!-- ============================================================== -->
-    <div class="page-wrapper"  id="pengenalan">
+    <div class="page-wrapper">
       <!-- ============================================================== -->
       <!-- Container fluid  -->
       <!-- ============================================================== -->
       <div class="container-fluid">
         <div class="row page-titles">
           <div class="col-md-5 col-sm-12 align-self-center">
-            <h1 class="weight-500 m-0">Soal : Skema Relasi</h1>
+            <h2 class="weight-500 m-0">Profil</h2>
           </div>
         </div>
+          <!--tabpanel-->
         <div class="row">
-            <!-- Column -->
-            <div class="col-md-12">
+          <div class="col-md-11">
               <div class="card">
                 <div class="card-body">
                   <div class="row">
+                    <div class="col-md-3 m-b-20 text-center">
+                      <img src="assets/imgs/users/profile-img.jpg" class="img-fluid"  alt="" title="" >
+                      <input type="file"></input>
+                      <!-- <button class="btn btn-primary w-100 mt-3 btn-rounded" for="file">Unggah gambar</button> -->
+                    </div>
                     <div class="col-md-9">
-                        <h3 class="weight-500 m-b-25" id="atribut">Latihan Soal 1</h3>
-                        <p class="font-16 m-b-30">Latihan soal berisikan materi tentang : <b>Attibut</b>, <b>Kardinalitas</b> , <b>Entitas</b></p>
-                        <button class="btn btn-primary bbtn-primary rounded pr-4 pl-4">Mulai</button>
-                    </div>
-                    <div class="col-md-3">
-                    <div class="icon-soal" >
-                      <p style="font-size:5em"><i class="flaticon-pencil-edit-button"></i></p>
-                    </div>
+                        <form class="form">
+                            <div class="form-group m-b-10 row">
+                              <label class="col-12 col-form-label">Nama</label>
+                              <div class="col-12">
+                                <input class="form-control" type="text" placeholder="Parse name here" required>
+                              </div>
+                            </div>
+                            <div class="form-group row m-b-10">
+                                <label class="col-12 col-form-label">Email</label>
+                                <div class="col-12">
+                                  <input class="form-control" type="text" placeholder="Parse email here" required>
+                                </div>
+                            </div>
+                            <div class="form-group row m-b-10">
+                                <label class="col-12 col-form-label">Lokasi</label>
+                                <div class="col-12">
+                                  <input class="form-control" type="text" placeholder="Lokasi" required>
+                                </div>
+                            </div>
+                            <div class="form-group row m-b-10">
+                              <label class="col-12 col-form-label">Tentang saya</label>
+                              <div class="col-12">
+                                <textarea class="form-control" style="resize: vertical"></textarea>
+                              </div>
+                            </div>
+                            <button class="btn btn-danger mt-3" type="submit">Perbarui profil</button>
+                          </form>
                     </div>
                   </div>
-                  
                 </div>
               </div>
             </div>
-            <div class="col-md-12">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-md-9">
-                          <h3 class="weight-500 m-b-25" id="atribut">Latihan Soal 2</h3>
-                          <p class="font-16 m-b-30">Latihan soal berisikan materi tentang : <b>Spesialisasi</b> & <b>Generalisasi</b></p>
-                          <button class="btn btn-primary bbtn-primary rounded pr-4 pl-4">Mulai</button>
-                      </div>
-                      <div class="col-md-3">
-                      <div class="icon-soal" >
-                        <p style="font-size:5em"><i class="flaticon-pencil-edit-button"></i></p>
-                      </div>
-                      </div>
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>
-            <!-- Column -->
-          </div>
+        </div>
+          <!--tabpanel-->
+        </div>
       </div>
     </div>
   </div>
