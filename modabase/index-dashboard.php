@@ -102,7 +102,7 @@
               <!-- ============================================================== -->
               <!-- Comment -->
               <!-- ============================================================== -->
-              <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-bell"></i>
+              <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle waves-effect waves-dark note" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-bell"></i>
                 <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right mailbox animated fadeIn">
@@ -167,8 +167,8 @@
                       <div class="dw-user-box">
                         <div class="u-img"><img src="assets/imgs/users/user-50x50.jpg" alt="user"></div>
                         <div class="clearfix"></div>
-                        <div class="u-text">
-                          <h4>Mason Vox</h4>
+                        <div class="u-text p-0 pt-3">
+                          <h4><?php echo $_SESSION['nama']?></h4>
                         </div>
                       </div>
                     </li>
@@ -237,7 +237,7 @@
       <div class="container-fluid">
         <div class="row page-titles">
           <div class="col-md-5 col-sm-12 align-self-center">
-            <h3 class="weight-500 m-0">Dashboard</h3>
+            <h2 class="weight-500 m-0">Dashboard</h2>
           </div>
         </div>
           <!--tabpanel-->
@@ -340,56 +340,23 @@ $('.panel-group').on('shown.bs.collapse', toggleIcon);
 <!-- Style switcher -->
 <!-- ============================================================== -->
 <script src="plugins/vendors/styleswitcher/jQuery.style.switcher.js"></script>
-<script src="plugins/vendors/datatables/jquery.dataTables.min.js"></script>
-<script>
-   $(function() {
-       $('#myTable').DataTable();
-           var table = $('#example').DataTable({
-              "columnDefs": [{
-                  "visible": false,
-                  "targets": 2
-            }],
-            "order": [
-                  [2, 'asc']
-            ],
-            "displayLength": 8,
-             "drawCallback": function(settings) {
-                var api = this.api();
-                 var rows = api.rows({
-                     page: 'current'
-                 }).nodes();
-                var last = null;
-             api.column(2, {
-                        page: 'current'
-                    }).data().each(function(group, i) {
-                        if (last !== group) {
-                            $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
-                            last = group;
-                        }
-                    });
-                }
-            });
-            // Order by the grouping
-            $('#example tbody').on('click', 'tr.group', function() {
-                var currentOrder = table.order()[0];
-                if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
-                    table.order([2, 'desc']).draw();
-                } else {
-                    table.order([2, 'asc']).draw();
-                }
-            });
-        
-    });
-    $('#example23').DataTable({
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    });
-</script>
 <script>
 $('#slimtest1, #slimtest2, #slimtest3, #slimtest4').perfectScrollbar();
 </script>
+
+<script>
+  $(document).ready(function(){
+    // Add smooth scrolling to all links
+    $(".note").on('click', function(event) {
+      console.log('note clicked');
+			$(".heartbit").hide();
+      $(".point").hide();
+			event.preventDefault();
+    });
+  });
+
+</script>
+
 </body>
 
 <!-- Mirrored from mintone.xyz/index-projects.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 04 Nov 2018 03:14:08 GMT -->

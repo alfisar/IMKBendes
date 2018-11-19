@@ -236,7 +236,7 @@
         </div> -->
         <div class="row justify-content-center">
             <!-- Column -->
-            <div class="col-md-11">
+            <div class="col-md-12">
               <div class="card">
                 <div class="card-body">
                     <h2 class="weight-500 m-0">Skema Relasi</h2>
@@ -245,16 +245,55 @@
                         </iframe>
                       </div>
                   <h2 class="weight-500 m-b-25" id="atribut">Pengenalan Skema Relasi</h2>
-                  <p class="font-16 m-b-30"> Lorem ipsum dolor sit amet, at mel elitr commodo efficiendi, vim tota melius in, eam doming nemore ea. Quem justo sensibus ei qui, ponderum dissentias theophrastus id sed, et suas homero per. Tota erat docendi in usu. Agam officiis has te. </p>
+                  <p class="font-16 m-b-30">
+                    Skema Relasional merupakan kumpulan tabel berdimensi dua (disebut relasi atau tabel dengan masing-masing relasi (relations) tersusun atas tuple (baris) dan atribut (kolom) pada suatu basis data. Skema relasi dipengaruhi oleh jenis atribut dan kardinalitas pada relasi antar entitas.Pada skema relasional, atribut akan disebut dengan kolom dan entitas akan disebut dengan tabel.
+                  </p>
 
                   <h2 class="weight-500 m-b-25">Attribut</h2>
-                  <p class="font-16 m-b-30"> Lorem ipsum dolor sit amet, at mel elitr commodo efficiendi, vim tota melius in, eam doming nemore ea. Quem justo sensibus ei qui, ponderum dissentias theophrastus id sed, et suas homero per. Tota erat docendi in usu. Agam officiis has te. </p>
-                  <p class="font-16 m-b-30"> Lorem ipsum dolor sit amet, at mel elitr commodo efficiendi, vim tota melius in, eam doming nemore ea. Quem justo sensibus ei qui, ponderum dissentias theophrastus id sed, et suas homero per. Tota erat docendi in usu. Agam officiis has te. </p>
-                  <p class="font-16 m-b-30" id="kardinalitas"> Lorem ipsum dolor sit amet, at mel elitr commodo efficiendi, vim tota melius in, eam doming nemore ea. Quem justo sensibus ei qui, ponderum dissentias theophrastus id sed, et suas homero per. Tota erat docendi in usu. Agam officiis has te. </p>
+                  <p class="font-16 m-b-30"> 
+                    <b>Atribut komposit</b> akan dipecah dengan membuat atribut terpisah untuk masing-masing komponennya. Atribut komposit akan akan di hilangkan dan komponen atribut tersebut dijadikan sebagai kolom tabel pada skema relasional. Perhatikan contoh pada gambar di bawah ini. 
+                  </p>
+                  <div class="row justify-content-center">
+                    <div class="col-md-10">
+                      <h2>Gambar tabel komposit</h2>
+                      <img>
+                    </div>
+                  </div>
+                  <p class="font-16 m-b-30">Atribut alamat tidak akan dijadikan kolom, namun digantikan dengan komponen atributnya
+                  yaitu jalan, kota, provinsi, dan kodePos</p>
+
+                  <p class="font-16 m-b-30"> <b>Atribut multivalue</b> M dari entitas E direpresentasikan oleh tabel terpisah E dan M. Tabel M terdiri atas atribut multivalue dan PK dari entitas E sebagai Foreign Key. PK dari tabel M biasanya merupakan kombinasi dari semua atributnya. Perhatikan gambar berikut yang menunjukan bagaimana transformasi sebuah atribut multivalue.</p>
+                  <div class="row justify-content-center">
+                    <div class="col-md-10">
+                      <h2>Gambar tabel multivalue</h2>
+                      <img>
+                    </div>
+                  </div>
+                  <p class="font-16 m-b-30" id="kardinalitas">
+                    Foreign Key (FK) merupakan atribut (atau kumpulan atribut) yang dapat mengidentifikasikan sebuah baris pada tabel lain secara unik. FK merupakan primary key dari tabel lain tersebut. Keberadaan FK inilah yang merepresentasikan adanya relasi antara satu tabel dengan tabel lain.
+                  </p>
 
                   <h2 class="weight-500 m-b-25">Kardinalitas</h2>
-                  <p class="font-16 m-b-30"> Lorem ipsum dolor sit amet, at mel elitr commodo efficiendi, vim tota melius in, eam doming nemore ea. Quem justo sensibus ei qui, ponderum dissentias theophrastus id sed, et suas homero per. Tota erat docendi in usu. Agam officiis has te. </p>
-                  <p class="font-16 m-b-30"> Lorem ipsum dolor sit amet, at mel elitr commodo efficiendi, vim tota melius in, eam doming nemore ea. Quem justo sensibus ei qui, ponderum dissentias theophrastus id sed, et suas homero per. Tota erat docendi in usu. Agam officiis has te. </p>
+                  <p class="font-16 m-b-30"> Langkah umum transformasi relasi biner adalah sebagai berikut : </p>
+                  <ul>
+                    <li>Identifikasi satu entitas sebagai “parent”</li>
+                    <li>Sedangkan entitas lainnya sebagai “child”</li>
+                    <li>Sebagai aturan umum, PK dari parent ditambahkan ke dalam child sebagai FK</li>
+                    <li>Atribut yang berada pada relasi ditambahkan ke tabel child.</li>
+                  </ul>
+                  <div class="row justify-content-center">
+                    <div class="col-md-10">
+                      <h2>Gambar diagram kardinalitas</h2>
+                      <img>
+                    </div>
+                  </div>
+                  <p class="font-16 m-b-30">Pada gambar diatas dapat dilihat bahwa PK1 dipilih sebgaia PK dari entitas 1 yang
+                  merupakan entitas baru hasil penggabungan kedua entitas. </p>
+                  <h4 class="weight-500 m-b-10">Kardinalitas : One to Many</h4>
+                  <p class="font-16 m-b-30">Entitas dengan kardinalitas 1 ke banyak maka entitas dengan kardinalitas 1 diidentifikasi
+                  sebagai parent, sedangkan dengan kardinalitas banyak di identifikasi sebagai child. Perhatikan
+                  contoh relasi satu ke banyak di bawah ini.</p>
+
                   <p class="font-16 m-b-30" id="entitas"> Lorem ipsum dolor sit amet, at mel elitr commodo efficiendi, vim tota melius in, eam doming nemore ea. Quem justo sensibus ei qui, ponderum dissentias theophrastus id sed, et suas homero per. Tota erat docendi in usu. Agam officiis has te. </p>
 
                   <h2 class="weight-500 m-b-25">Entitas</h2>
