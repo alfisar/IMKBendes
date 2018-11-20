@@ -262,7 +262,7 @@
                       <div class="col-md-9">
                           <h3 class="weight-500 m-b-25" id="atribut">Latihan Soal 2</h3>
                           <p class="font-16 m-b-30">Latihan soal berisikan materi tentang : <b>Spesialisasi</b> & <b>Generalisasi</b></p>
-                          <button class="btn btn-primary bbtn-primary rounded pr-4 pl-4">Mulai</button>
+                          <button class="btn btn-primary bbtn-primary rounded pr-4 pl-4" id="spesialisasi" >Mulai</button>
                       </div>
                       <div class="col-md-3">
                       <div class="icon-soal" >
@@ -326,6 +326,9 @@ $('.panel-group').on('shown.bs.collapse', toggleIcon);
 <script src="plugins/vendors/styleswitcher/jQuery.style.switcher.js"></script>
 <script src="plugins/vendors/datatables/jquery.dataTables.min.js"></script>
 <script>
+  $('#spesialisasi').click(function () {
+			window.location.href = 'latihansoal.html';
+	});
    $(function() {
        $('#myTable').DataTable();
            var table = $('#example').DataTable({

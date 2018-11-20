@@ -1,8 +1,9 @@
 <?php 
 	session_start();
-    if (isset($_SESSION['nama'])) {
+    if (isset($_SESSION['email'])) {
       header("Location: index-dashboard.php");
 	}
+	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,14 +82,37 @@
 					</p>
 			<form method="POST" action="register.php">
 				<?php 
-					// session_start();
-                    if (!empty($_SESSION['i'])) {
-							echo "<div class='alert alert-danger'> Registrasi Gagal</div>";
-						}
-					else if (!empty($_SESSION['h'])){
-							echo "<div class='alert alert-success'> Registrasi berhasil</div>";
-						}
-                ?>
+					if (!empty($_SESSION['h'])) {
+				?>
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close" id="Rberhasil">
+   							<span aria-hidden="true">&times;</span>
+  					</button>  
+						<strong>
+								Redistrasi anda berhasil
+						</strong>
+ 							
+					</div>
+				<?php	
+					}
+				?>
+
+				<?php 
+					if (!empty($_SESSION['i'])) {
+				?>
+					<div class="alert alert-danger alert-dismissible fade show" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close" id="Rgagal">
+   							<span aria-hidden="true">&times;</span>
+  					</button>  
+						<strong>
+								Email yang anda masukan sudah ada
+						</strong>
+ 							
+					</div>
+				<?php	
+					}
+				?>
+				
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<input type="text" class="form-control" name="fname" id="firstName" placeholder="Nama depan" required>
@@ -117,7 +141,17 @@
 				<form method="POST" action="login.php">
 						<?php 
 							if (!empty($_SESSION['j'])) {
-							echo "<div class='alert alert-danger'>username atau password anda salah</div>";
+						?>
+						<div class="alert alert-danger alert-dismissible fade show" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close" id="login">
+   								<span aria-hidden="true">&times;</span>
+  							</button>  
+							<strong>
+								  Email atau Password anda salah
+							</strong>
+ 							
+						</div>
+						<?php	
 							}
 						?>
 						<div class="form-group">
@@ -184,8 +218,16 @@ $('#slimtest1, #slimtest2, #slimtest3, #slimtest4').perfectScrollbar();
 </script>
 
 <script>
-		$(function() {
-		
+		$('#login').click(function() {
+			<?php unset($_SESSION['j']);?>
+		});
+		$('#Rberhasil').click(function() {
+			<?php unset($_SESSION['h']);?>
+		});
+		$('#Rgagal').click(function() {
+			<?php unset($_SESSION['i']);?>
+		});
+		$(function() {		 
 		 $('#masuk').click(function(e) {
 			$('#daftarForm').find("input[type=text], input[type=password] , input[type=email] ").val("");
 			$("#masukForm").show();
@@ -207,6 +249,7 @@ $('#slimtest1, #slimtest2, #slimtest3, #slimtest4').perfectScrollbar();
 		});
 		
 		});
+		
 </script>
 
 </body>

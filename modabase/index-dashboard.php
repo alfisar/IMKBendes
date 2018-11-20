@@ -217,7 +217,7 @@
                   <li><a href="index-materi.html#generalisasi">6.Generalisasi</a></li>
               </ul>
             </li>
-            <li><a href="index-soal.html"><i class="flaticon-pencil-edit-button"></i><span class="hide-menu">Soal</span></a></li>
+            <li><a href="index-soal.php"><i class="flaticon-pencil-edit-button"></i><span class="hide-menu">Soal</span></a></li>
             <li><a href="index-diskusi.html"><i class="flaticon-speech"></i><span class="hide-menu">Diskusi</span></a></li>
           </ul>
         </nav>
