@@ -159,12 +159,35 @@
               <!-- ============================================================== -->
               <!-- Profile -->
               <!-- ============================================================== -->
-              <li class="nav-item dropdown u-pro"> <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/imgs/users/user-50x50.jpg" alt="user" class="" /></a>
+              <?php 
+                  if($data['foto'] != ""){
+              ?>
+              <li class="nav-item dropdown u-pro"> <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/imgs/users/<?php echo $data['foto']?>" alt="user" class="" /></a>
+              <?php 
+                  }
+                  else { 
+              ?> 
+              <li class="nav-item dropdown u-pro"> <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/imgs/users/profile-img.jpg" alt="user" class="" /></a> 
+              <?php 
+                  }
+              ?>
                 <div class="dropdown-menu dropdown-menu-right animated fadeIn">
                   <ul class="dropdown-user">
                     <li class="text-center">
                       <div class="dw-user-box">
-                        <div class="u-img"><img src="assets/imgs/users/user-50x50.jpg" alt="user"></div>
+                          <?php 
+                            if($data['foto'] != ""){
+                          ?>
+                          <div class="u-img"><img src="assets/imgs/users/<?php echo $data['foto']?>" alt="user"></div>
+                          <?php 
+                            }
+                            else { 
+                          ?>
+                          <div class="u-img"><img src="assets/imgs/users/profile-img.jpg" alt="user"></div>
+                          <?php 
+                            }
+                          ?>
+
                         <div class="clearfix"></div>
                         <div class="u-text">
                           <h4><?php echo $data['namad']?></h4>
@@ -215,8 +238,8 @@
                   <li><a href="index-materi.html#generalisasi">6.Generalisasi</a></li>
               </ul>
             </li>
-            <li><a href="index-soal.html"><i class="flaticon-pencil-edit-button"></i><span class="hide-menu">Soal</span></a></li>
-            <li><a href="index-diskusi.html"><i class="flaticon-speech"></i><span class="hide-menu">Diskusi</span></a></li>
+            <li><a href="index-soal.php"><i class="flaticon-pencil-edit-button"></i><span class="hide-menu">Soal</span></a></li>
+            <li><a href="index-diskusi.php"><i class="flaticon-speech"></i><span class="hide-menu">Diskusi</span></a></li>
           </ul>
         </nav>
         <!-- End Sidebar navigation -->
@@ -246,8 +269,22 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col-md-3 m-b-20 text-center">
+                      <?php 
+                          if($data['foto'] != ""){
+                      ?>
+                      <img src="assets/imgs/users/<?php echo $data['foto']; ?>" class="img-fluid"  alt="" title="" >
+                      <?php 
+                          }
+                          else { 
+                      ?>
                       <img src="assets/imgs/users/profile-img.jpg" class="img-fluid"  alt="" title="" >
-                      <input type="file"></input>
+                      <?php 
+                          }
+                      ?>
+                      <form action='uploadfoto.php' method='POST' enctype='multipart/form-data'>
+                         <input type='file' name='userFile'><br>
+                          <input type='submit' name='upload_btn' value='upload'>
+                      </form>
                       <!-- <button class="btn btn-primary w-100 mt-3 btn-rounded" for="file">Unggah gambar</button> -->
                     </div>
                     <div class="col-md-9">

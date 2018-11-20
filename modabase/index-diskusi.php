@@ -1,3 +1,10 @@
+<?php    
+    session_start();
+      include 'dataprofil.php';
+      if (!isset($_POST['email']) && !isset($_SESSION['email'])) {
+      header("Location: index-sign.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -156,15 +163,38 @@
                 <!-- ============================================================== -->
                 <!-- Profile -->
                 <!-- ============================================================== -->
-                <li class="nav-item dropdown u-pro"> <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/imgs/users/user-50x50.jpg" alt="user" class="" /></a>
+                <?php 
+                  if($data['foto'] != ""){
+                ?>
+                <li class="nav-item dropdown u-pro"> <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/imgs/users/<?php echo $data['foto']?>" alt="user" class="" /></a>
+                <?php 
+                  }
+                  else { 
+                ?> 
+                <li class="nav-item dropdown u-pro"> <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/imgs/users/profile-img.jpg" alt="user" class="" /></a> 
+                <?php 
+                  }
+                ?>
+
                   <div class="dropdown-menu dropdown-menu-right animated fadeIn">
                     <ul class="dropdown-user">
                       <li class="text-center">
                         <div class="dw-user-box">
-                          <div class="u-img"><img src="assets/imgs/users/user-50x50.jpg" alt="user"></div>
+                          <?php 
+                            if($data['foto'] != ""){
+                          ?>
+                          <div class="u-img"><img src="assets/imgs/users/<?php echo $data['foto']?>" alt="user"></div>
+                          <?php 
+                            }
+                            else { 
+                          ?>
+                          <div class="u-img"><img src="assets/imgs/users/profile-img.jpg" alt="user"></div>
+                          <?php 
+                            }
+                          ?>
                           <div class="clearfix"></div>
                           <div class="u-text">
-                            <h4>Mason Vox</h4>
+                            <h4><?php echo $data['namad'] ?></h4>
                           </div>
                         </div>
                       </li>
@@ -212,7 +242,7 @@
                   <li><a href="index-materi.html#generalisasi">6.Generalisasi</a></li>
               </ul>
             </li>
-            <li><a href="index-soal.html" ><i class="flaticon-pencil-edit-button"></i><span class="hide-menu">Soal</span></a></li>
+            <li><a href="index-soal.php" ><i class="flaticon-pencil-edit-button"></i><span class="hide-menu">Soal</span></a></li>
             <li><a href="#" class="active"><i class="flaticon-speech"></i><span class="hide-menu">Diskusi</span></a></li>
           </ul>
         </nav>
