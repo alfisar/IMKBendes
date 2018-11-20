@@ -293,6 +293,71 @@
                             <button type="submit" style="float: right; margin-top: 20px; margin-bottom: 20px" class="btn btn-primary">Kirim</button>
                           </div>
                           <h3 style="margin-top: 50px; margin-bottom: 20px;">2 Diskusi</h3>
+                          <div id="comment">
+                            <div class="mainComment">
+                              <div class="float-right">
+                                <a href="#"><i class="far fa-thumbs-up"></i></a>
+                                <span>+6</span>
+                                <a href="#"><i style="margin-left: 20px" class="far fa-thumbs-down"></i></a>
+                                <span>0</span>
+                                </div>
+                                <div class="d-flex profile">
+                                  <img id="profileImage" src="assets/imgs/users/d1.jpg" class="rounded-circle mr-3" width="auto" height="50vh">
+                                  <div class="profile-identity">
+                                    <h6 id="userImage" class="font-weight-bold mb-0">Sugeng</h6>
+                                    <p id="dateComment" class="font-14">September, 30th 2018</p>
+                                  </div>
+                                </div>
+                                <p class="pt-3 pb-0 mb-0" id="commentText">Menurutku, bukannya kelas A harusnya relasi komposisi dengan kelas B?</p>
+                                <a href="#" class="float-right">Balas</a>
+                              </div>
+                              <div class="row justify-content-end">
+                                  <div class="col-md-9 mt-5">
+                                    <div id="commentReply">
+                                      <div class="float-right">
+                                        <a href="#"><i class="far fa-thumbs-up"></i></a>
+                                        <span>+3</span>
+                                        <a href="#"><i style="margin-left: 20px" class="far fa-thumbs-down"></i></a>
+                                        <span>0</span>
+                                      </div>
+                                      <div class="d-flex profile">
+                                        <img id="profileImage" src="assets/imgs/users/avatar-1.jpg" class="rounded-circle mr-3" width="auto" height="50vh">
+                                        <div class="profile-identity">
+                                          <h6 id="userImage" class="font-weight-bold mb-0">Jatmika</h6>
+                                          <p id="dateComment" class="font-14">October, 2nd 2018</p>
+                                        </div>
+                                      </div>
+                                      <p class="pt-3 pb-0 mb-0" id="commentText">Mungkin kamu perlu lihat lagi pengertian relasi komposisi</p>
+                                      <a href="#" class="float-right">Balas</a>
+                                      <div class="row">
+                                        <div class="col-md-12">
+
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                          </div>
+                          <!-- <div class="float-right">
+                              <a href="#"><i class="far fa-thumbs-up"></i></a>
+                              <span>+6</span>
+                              <a href="#"><i style="margin-left: 20px" class="far fa-thumbs-down"></i></a>
+                              <span>0</span>
+                              <div>
+                              </div>
+                            </div>
+                          <div class="d-flex profile">
+                              <img id="profileImage" src="https://via.placeholder.com/50" class="rounded-circle mr-3" width="auto" height="50vh"> 
+                              <div class="profile-identity">
+                                  <h5 id="userImage" class="font-weight-bold">John Doe</h5>
+                                  <p id="dateComment" class="font-16">September, 30th 2018</p> 
+                              </div>
+                          </div>
+                          <p class="pb-0 mb-0">Menurutku, bukannya kelas A harusnya relasi komposisi dengan kelas B?</p>
+                          <a href="#" class="float-right">Balas</a> -->
+                          <!-- <button class="btn btn-primary bbtn-primary rounded pr-4 pl-4" type="button">Reply</button> -->
+
+                          <!-- <div>
                           <img src="https://via.placeholder.com/50" class="rounded-circle" style="margin-bottom: 15px; margin-right: 20px">
                           <div class="float-right">
                             <a href="#"><i class="far fa-thumbs-up"></i></a>
@@ -306,12 +371,14 @@
                           <h5 class="font-weight-bold">John Doe</h5>
                           <p>September, 30th 2018</p>
                           <h6>Menurutku, bukannya kelas A harusnya relasi komposisi dengan kelas B?<h6>
-                              <div id="ini" class="input-group mb-3">
+                              <button class="btn btn-outline-secondary" style="float: right; margin-top: 10px" onclick="onc()">Reply</button>
+                            </div> -->
+                              <!-- <div id="ini" class="input-group mb-3">
                                 <input type="text" class="form-control" placeholder="Type your comments here">
                                 <div class="input-group-append">
                                   <button class="btn btn-primary bbtn-primary rounded pr-4 pl-4" type="button">Reply</button>
                                 </div>
-                              </div>
+                              </div> -->
                         </div>
                       </form>
                     </div>
@@ -370,52 +437,6 @@
   <!-- ============================================================== -->
   <script src="plugins/vendors/styleswitcher/jQuery.style.switcher.js"></script>
   <script src="plugins/vendors/datatables/jquery.dataTables.min.js"></script>
-  <script>
-    $(function () {
-      $('#myTable').DataTable();
-      var table = $('#example').DataTable({
-        "columnDefs": [{
-          "visible": false,
-          "targets": 2
-        }],
-        "order": [
-          [2, 'asc']
-        ],
-        "displayLength": 8,
-        "drawCallback": function (settings) {
-          var api = this.api();
-          var rows = api.rows({
-            page: 'current'
-          }).nodes();
-          var last = null;
-          api.column(2, {
-            page: 'current'
-          }).data().each(function (group, i) {
-            if (last !== group) {
-              $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
-              last = group;
-            }
-          });
-        }
-      });
-      // Order by the grouping
-      $('#example tbody').on('click', 'tr.group', function () {
-        var currentOrder = table.order()[0];
-        if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
-          table.order([2, 'desc']).draw();
-        } else {
-          table.order([2, 'asc']).draw();
-        }
-      });
-
-    });
-    $('#example23').DataTable({
-      dom: 'Bfrtip',
-      buttons: [
-        'copy', 'csv', 'excel', 'pdf', 'print'
-      ]
-    });
-  </script>
   <script>
     $('#slimtest1, #slimtest2, #slimtest3, #slimtest4').perfectScrollbar();
   </script>
