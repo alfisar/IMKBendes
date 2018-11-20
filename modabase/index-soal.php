@@ -254,7 +254,8 @@
                     </div>
                     <div class="col-md-3">
                     <div class="icon-soal" >
-                      <p style="font-size:5em"><i class="flaticon-pencil-edit-button"></i></p>
+                      <h4>#1</h4>
+                      <p style="font-size:5em"><i class="fas fa-file-signature"></i></p>
                     </div>
                     </div>
                   </div>
@@ -273,7 +274,7 @@
                       </div>
                       <div class="col-md-3">
                       <div class="icon-soal" >
-                        <p style="font-size:5em"><i class="flaticon-pencil-edit-button"></i></p>
+                        <p style="font-size:5em"><i class="fas fa-file-signature"></i></p>
                       </div>
                       </div>
                     </div>
