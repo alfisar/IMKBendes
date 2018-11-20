@@ -88,10 +88,7 @@
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close" id="Rberhasil">
    							<span aria-hidden="true">&times;</span>
   					</button>  
-						<strong>
-								Redistrasi anda berhasil
-						</strong>
- 							
+								Registrasi anda berhasil 							
 					</div>
 				<?php	
 					}
@@ -104,10 +101,7 @@
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close" id="Rgagal">
    							<span aria-hidden="true">&times;</span>
   					</button>  
-						<strong>
-								Email yang anda masukan sudah ada
-						</strong>
- 							
+								Email yang anda masukan sudah terdaftar
 					</div>
 				<?php	
 					}
@@ -146,10 +140,7 @@
 							<button type="button" class="close" data-dismiss="alert" aria-label="Close" id="login">
    								<span aria-hidden="true">&times;</span>
   							</button>  
-							<strong>
 								  Email atau Password anda salah
-							</strong>
- 							
 						</div>
 						<?php	
 							}

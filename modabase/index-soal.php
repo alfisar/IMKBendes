@@ -35,6 +35,7 @@
 <link href="assets/css/style.css" rel="stylesheet">
 <link href="assets/css/responsive.css" rel="stylesheet">
 <link href="plugins/vendors/bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -235,8 +236,8 @@
                   <li><a href="index-materi.html#atribut">2.Atribut</a></li>
                   <li><a href="index-materi.html#kardinalitas">3.Kardinalitas</a></li>
                   <li><a href="index-materi.html#entitas">4.Entitas</a></li>
-                  <li><a href="index-materi.html#spesialisasi">5.Spesialisasi</a></li>
-                  <li><a href="index-materi.html#generalisasi">6.Generalisasi</a></li>
+                  <!-- <li><a href="index-materi.html#spesialisasi">5.Spesialisasi</a></li>
+                  <li><a href="index-materi.html#generalisasi">6.Generalisasi</a></li> -->
               </ul>
             </li>
             <li><a href="#" class="active"><i class="flaticon-pencil-edit-button"></i><span class="hide-menu">Soal</span></a></li>
@@ -271,13 +272,12 @@
                   <div class="row">
                     <div class="col-md-9">
                         <h3 class="weight-500 m-b-25" id="atribut">Latihan Soal 1</h3>
-                        <p class="font-16 m-b-30">Latihan soal berisikan materi tentang : <b>Attibut</b>, <b>Kardinalitas</b> , <b>Entitas</b></p>
-                        <button class="btn btn-primary bbtn-primary rounded pr-4 pl-4" id="atribut1">Mulai</button>
+                        <p class="font-16 m-b-30">Latihan soal berisikan materi tentang : <b>Attibut</b>, <b>Kardinalitas</b></p>
+                        <button class="btn btn-primary bbtn-primary rounded pr-4 pl-4 w-25" id="soal1">Mulai</button>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3" >
                     <div class="icon-soal" >
-                      <h4>#1</h4>
-                      <p style="font-size:5em"><i class="fas fa-file-signature"></i></p>
+                      <p style="font-size:5em; color:#3fc7bd"><i class="fas fa-file-signature"></i></p>
                     </div>
                     </div>
                   </div>
@@ -291,12 +291,12 @@
                     <div class="row">
                       <div class="col-md-9">
                           <h3 class="weight-500 m-b-25" id="atribut">Latihan Soal 2</h3>
-                          <p class="font-16 m-b-30">Latihan soal berisikan materi tentang : <b>Spesialisasi</b> & <b>Generalisasi</b></p>
-                          <button class="btn btn-primary bbtn-primary rounded pr-4 pl-4" id="spesialisasi" >Mulai</button>
+                          <p class="font-16 m-b-30">Latihan soal berisikan materi tentang : <b>Entitas</b></p>
+                          <button class="btn btn-primary bbtn-primary rounded pr-4 pl-4 w-25" id="soal2" >Mulai</button>
                       </div>
                       <div class="col-md-3">
                       <div class="icon-soal" >
-                        <p style="font-size:5em"><i class="fas fa-file-signature"></i></p>
+                        <p style="font-size:5em ;color:#3fc7bd"><i class="fas fa-file-signature"></i></p>
                       </div>
                       </div>
                     </div>

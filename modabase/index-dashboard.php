@@ -69,7 +69,7 @@
         <!-- Logo -->
         <!-- ============================================================== -->
         <div class="navbar-header"> 
-            <a class="navbar-brand" href="index-dashboard.html">
+            <a class="navbar-brand" href="index-dashboard.php">
                 <!-- Logo icon -->
                 <div><h3>M<span>odabase</h3></span></div>
                 <!--End Logo icon -->
@@ -169,7 +169,7 @@
                   }
                   else { 
               ?> 
-              <li class="nav-item dropdown u-pro"> <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/imgs/users/profile-img.jpg" alt="user" class="" /></a> 
+              <li class="nav-item dropdown u-pro"> <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/imgs/users/no-pic.jpg" alt="user" class="" /></a> 
               <?php 
                   }
               ?>  
@@ -187,7 +187,7 @@
                           }
                           else { 
                       ?>
-                      <div class="u-img"><img src="assets/imgs/users/profile-img.jpg" alt="user"></div>
+                      <div class="u-img"><img src="assets/imgs/users/no-pic.jpg" alt="user"></div>
                       <?php 
                           }
                       ?>
@@ -238,8 +238,8 @@
                   <li><a href="index-materi.html#atribut">2.Atribut</a></li>
                   <li><a href="index-materi.html#kardinalitas">3.Kardinalitas</a></li>
                   <li><a href="index-materi.html#entitas">4.Entitas</a></li>
-                  <li><a href="index-materi.html#spesialisasi">5.Spesialisasi</a></li>
-                  <li><a href="index-materi.html#generalisasi">6.Generalisasi</a></li>
+                  <!-- <li><a href="index-materi.html#spesialisasi">5.Spesialisasi</a></li>
+                  <li><a href="index-materi.html#generalisasi">6.Generalisasi</a></li> -->
               </ul>
             </li>
             <li><a href="index-soal.php"><i class="flaticon-pencil-edit-button"></i><span class="hide-menu">Soal</span></a></li>
@@ -382,6 +382,17 @@ $('#slimtest1, #slimtest2, #slimtest3, #slimtest4').perfectScrollbar();
   });
 
 </script>
+<script>
+        $(".dial").knob();
+
+        $({animatedVal: 0}).animate({animatedVal: 80}, {
+            duration: 2000,
+            easing: "swing",
+            step: function() {
+                $(".dial").val(Math.ceil(this.animatedVal)).trigger("change");
+            }
+        });
+    </script>
 
 </body>
 

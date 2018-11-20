@@ -60,56 +60,55 @@
 								<!-- Logo text -->
 				</a> 
 </nav>
-	<!--
-	<div class="container mt-5">
-		<div class="row">
-            <!-- Column 
-            <div class="col-md-12">
-              <div class="card text-center">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-md-12">
-                        <h3 class="weight-500 m-b-25" id="atribut">Latihan Soal 1</h3>
-                        <p class="font-16 m-b-30">Latihan soal berisikan materi tentang : <b>Attibut</b>, <b>Kardinalitas</b> , <b>Entitas</b></p>
-                        <button class="btn btn-primary bbtn-primary rounded pr-4 pl-4">Mulai</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-              </div>
-            <!-- Column 
-          </div>
-	</div>
-	!-->
-	<div class="container mt-5">
-		<div class="row">
-			<div class="col-md-12">
+	<div class="container mt-4">
+		<div class="row justify-content-center">
+			<div class="col-md-10">
 			    <div class="card text-center">
 				  <div class="card-header" style="background-color: #3fc6bd ">
-				  	<!-- <a href="your link here"> <i class="fas fa-times" style="float: left; color: white;"></i></a>
-				    <h6 style="color: white">Materi Atribut</h6>
-						<h6 style="float: right; color: white">1/5</h6> -->
 						<div class="row">
 							<div class="col"><a href="your link here"> <i class="fas fa-times" style="float: left; color: white;"></i></a></div>
-							<div class="col text-center"><h6 style="color: white">Materi Atribut</h6></div>
-							<div class="col"><h6 style="float: right; color: white">1/5</h6> </div>
+							<div class="col text-center"><h2 style="color: white">Materi Atribut</h></div>
+							<div class="col"></div>
 						</div>
 				  </div>
 				  <div class="card-body">
-				    <h2 class="card-title mt-3" >Pilihan Ganda</h2>
-				    <p class="card-text mb-5" style="font-size: 18pt">Apa yg dimaksud dengan anda siapa?</p>
-				    <div class="mt-5 mb-4">    
-				    	<button class="btn btn-outline-primary w-25 mr-3 p-3">A. Atribut adalah A</button>
-				    	<button class="btn btn-outline-primary w-25 ml-3 p-3">B. Atribut adalah B</button>
-				    </div>
-						<div class="mt-4 mb-5">    
-								<button class="btn btn-outline-primary w-25 mr-3 p-3">C. Atribut adalah C</button>
-								<button class="btn btn-outline-primary w-25 ml-3 p-3">D. Atribut adalah D</button>
+						<div class="row justify-content-center">
+							<div class="col-md-6 mb-2">    
+								<h2 class="mb-2 weight-500">Nilai</h2>
+								<div class="pt-3 pb-3 no-block">
+										<div class="align-self-center">
+											<input data-plugin="knob" class="dial"  data-width="90" data-height="90"  data-linecap="round" data-fgColor="#f95476" data-thickness=".2" value="0" />
+											</div>
+								</div>
+								<h4 id="kalimat" class=" mb-4"></h4>
+								<div class="row justify-content-center">
+									<div class="col-md-6">
+										<button class="btn btn-outline-danger w-100 p-3">Coba lagi</button>
+									</div>
+									<div class="col-md-6">
+										<button class="btn btn-outline-success w-100 p-3">Kembali ke menu</button>
+									</div>
+								</div>
 							</div>
+					</div>
 				  </div>
 				</div>
 			</div>
+			<!-- <div class="col-lg-4 col-md-6">
+					<div class="card">
+						<div class="card-body">
+							<div class="d-flex pt-3 pb-2 no-block">
+								<div class="align-self-center mr-3 knob-icon">
+									<input data-plugin="knob" class="dial"  data-width="70" data-height="70"  data-linecap="round" data-fgColor="#f95476" data-thickness=".2" value="85" />
+									<i class="flaticon-tool text-pink"></i> </div>
+								<div class="align-slef-center mr-auto">
+									<h2 class="m-b-0 text-uppercase font-18 font-medium lp-5">Storage</h2>
+									<h6 class="text-light m-b-0">Used <strong>315 Gb</strong> / Free <strong>25 Gb</strong></h6>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> -->
 		</div>
 	</div>
 <!-- ============================================================== -->
@@ -119,16 +118,9 @@
 <!-- Bootstrap popper Core JavaScript -->
 <script src="plugins/vendors/bootstrap/js/popper.min.js"></script>
 <script src="plugins/vendors/bootstrap/js/bootstrap.min.js"></script>
-<script>
-function toggleIcon(e) {
-    $(e.target)
-        .prev('.card-link')
-        .find(".more-less")
-        .toggleClass('fa-plus fa-minus');
-}
-$('.panel-group').on('hidden.bs.collapse', toggleIcon);
-$('.panel-group').on('shown.bs.collapse', toggleIcon);
-</script>
+<script src="assets/js/wow.js"></script>
+
+
 <!-- slimscrollbar scrollbar JavaScript -->
 <script src="plugins/vendors/ps/perfect-scrollbar.jquery.min.js"></script>
 <!--Wave Effects -->
@@ -145,49 +137,44 @@ $('.panel-group').on('shown.bs.collapse', toggleIcon);
 <script src="plugins/vendors/c3-master/c3.min.js"></script>
 <!--jquery knob -->
 <script src="plugins/vendors/knob/jquery.knob.js"></script>
+<!--Sparkline JavaScript -->
+<script src="plugins/vendors/sparkline/jquery.sparkline.min.js"></script> 
+
 <!--Morris JavaScript -->
 <script src="plugins/vendors/raphael/raphael-min.js"></script>
 <script src="plugins/vendors/morrisjs/morris.js"></script>
 <!-- Popup message jquery -->
 <script src="plugins/vendors/toast-master/js/jquery.toast.js"></script>
-<!-- Dashboard JS -->
-<script src="assets/js/dashboard-projects.js"></script>
+ <!-- Chart JS -->
+ <script src="plugins/vendors/Chart.js/Chart.min.js"></script>
+
+<!-- page JS -->
+<script src="assets/js/charts-page.js"></script>
+<script>
+    $(".dial").knob();
+		var less50 = "Jangan menyerah, ayo coba lagi!";
+		var less80 = "Ayo semangat, sedikit lagi menuju sempurna!";
+		var less100 = "Kerja bagus!";
+		var hundred = "Hore, Pertahankan nilaimu!";
+
+		var score = (3/5) * 100;
+		console.log(score);
+    $({animatedVal: 0}).animate({animatedVal: score}, {
+       duration: 2000,
+       easing: "swing", 
+       step: function() { 
+           $(".dial").val(Math.ceil(this.animatedVal)).trigger("change"); 
+       }
+    }); 
+		$("#kalimat").text(less80);
+</script>
+
 <!-- ============================================================== -->
 <!-- Style switcher -->
 <!-- ============================================================== -->
 <script src="plugins/vendors/styleswitcher/jQuery.style.switcher.js"></script>
-<script src="plugins/vendors/datatables/jquery.dataTables.min.js"></script>
-<script>
-$('#slimtest1, #slimtest2, #slimtest3, #slimtest4').perfectScrollbar();
-</script>
-
-<script>
-		$(function() {
-		
-		 $('#masuk').click(function(e) {
-			$('#daftarForm').find("input[type=text], input[type=password] , input[type=email] ").val("");
-			$("#masukForm").show();
-			$('#inputEmail').focus();
-			$("#daftarForm").hide();
-			$('#daftar').removeClass('daftarDiv');
-			$(this).addClass('masukDiv');
-			e.preventDefault();
-		 });
-		
-		$('#daftar').click(function(e) {
-			$('#masukForm').find("input[type=email], input[type=password] ").val("");
-			$("#daftarForm").show();
-			$('#firstName').focus();
-			$("#masukForm").hide();
-			$('#masuk').removeClass('masukDiv');
-			$(this).addClass('daftarDiv');
-			e.preventDefault();
-		});
-		
-		});
-</script>
-
+</div>
 </body>
 
-<!-- Mirrored from mintone.xyz/index-projects.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 04 Nov 2018 03:14:08 GMT -->
+<!-- Mirrored from mintone.xyz/ui-charts.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 04 Nov 2018 03:15:12 GMT -->
 </html>

@@ -238,8 +238,8 @@
                   <li><a href="index-materi.html#atribut">2.Atribut</a></li>
                   <li><a href="index-materi.html#kardinalitas">3.Kardinalitas</a></li>
                   <li><a href="index-materi.html#entitas">4.Entitas</a></li>
-                  <li><a href="index-materi.html#spesialisasi">5.Spesialisasi</a></li>
-                  <li><a href="index-materi.html#generalisasi">6.Generalisasi</a></li>
+                  <!-- <li><a href="index-materi.html#spesialisasi">5.Spesialisasi</a></li>
+                  <li><a href="index-materi.html#generalisasi">6.Generalisasi</a></li> -->
               </ul>
             </li>
             <li><a href="index-soal.php" ><i class="flaticon-pencil-edit-button"></i><span class="hide-menu">Soal</span></a></li>
@@ -322,7 +322,7 @@
                   </div>
                 </div>
             </div>
-            <div class="col-md-12">
+            <!-- <div class="col-md-12">
                 <div class="card">
                   <div class="card-body">
                     <div class="row">
@@ -357,7 +357,7 @@
                     </div>
                   </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Column -->
           </div>
