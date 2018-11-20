@@ -29,6 +29,7 @@
 <link rel="stylesheet" href="assets/css/sign2.css">
 <link href="assets/css/responsive.css" rel="stylesheet">
 <link href="plugins/vendors/bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="assets/css/animateme.css">
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -38,7 +39,31 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
-<body class="fix-header fix-sidebar card-no-border" style="background-color: #f6f7fb">
+<body class="fix-header fix-sidebar card-no-border" style="background-color: #f6f7fb;position: relative;z-index: -1">
+<div id="checkoutLayer">
+</div>
+<div id="checkoutCard">
+	<div class="row justify-content-center mt-5">
+		<div class="col-md-6 mt-5">
+			<!-- Card -->
+			<div class="card mt-5" id="cardAnimate">
+				<div class="card-body p-b-0 text-center">
+					<h3 class="pt-3 mb-0">Anda belum selesai mengerjakan soal</h3>
+					<h3 class="pt-0 mt-0">lanjut keluar?</h3>
+					<div class="row p-5">
+						<div class="col-md-6">
+							<button class="btn btn-outline-success w-75 pt-3 pb-3" id="hideExit">Batal</button>
+						</div>
+						<div class="col-md-6">
+							<button class="btn btn-outline-danger w-75 pt-3 pb-3 " id="yesExit">Kembali ke menu</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Card -->
+		</div>
+	</div>
+</div>
 <!-- ============================================================== -->
 <!-- Preloader - style you can find in spinners.css -->
 <!-- ============================================================== -->
@@ -53,7 +78,7 @@
 <!-- Main wrapper - style you can find in pages.scss -->
 <!-- ============================================================== -->
 <nav class="navbar nav-form text-center" style="height: auto">
-				<a class="navbar-brand w-100" href="index-dashboard.php">
+				<a class="navbar-brand w-100" href="#" onclick="checkOut()">
 						<!-- Logo icon -->
 						<h2 class="weight-500">Modabase</h2>
 						<!--End Logo icon -->
@@ -91,7 +116,7 @@
 				    <h6 style="color: white">Materi Atribut</h6>
 						<h6 style="float: right; color: white">1/5</h6> -->
 						<div class="row">
-							<div class="col"><a href="your link here"> <i class="fas fa-times" style="float: left; color: white;"></i></a></div>
+							<div class="col"><a href="#" onclick="checkOut()"> <i class="fas fa-times" style="float: left; color: white;"></i></a></div>
 							<div class="col text-center"><h6 style="color: white">Materi Atribut</h6></div>
 							<div class="col"><h6 style="float: right; color: white">1/5</h6> </div>
 						</div>
@@ -162,26 +187,26 @@ $('#slimtest1, #slimtest2, #slimtest3, #slimtest4').perfectScrollbar();
 </script>
 
 <script>
+
+	function checkOut(){
+		$('#checkoutLayer').fadeIn();
+		$('#checkoutCard').fadeIn();
+		$('#cardAnimate').addClass("animated shake");
+	}
+
 		$(function() {
 		
-		 $('#masuk').click(function(e) {
-			$('#daftarForm').find("input[type=text], input[type=password] , input[type=email] ").val("");
-			$("#masukForm").show();
-			$('#inputEmail').focus();
-			$("#daftarForm").hide();
-			$('#daftar').removeClass('daftarDiv');
-			$(this).addClass('masukDiv');
-			e.preventDefault();
-		 });
-		
-		$('#daftar').click(function(e) {
-			$('#masukForm').find("input[type=email], input[type=password] ").val("");
-			$("#daftarForm").show();
-			$('#firstName').focus();
-			$("#masukForm").hide();
-			$('#masuk').removeClass('masukDiv');
-			$(this).addClass('daftarDiv');
-			e.preventDefault();
+		 $('#hideExit').click(function(e){
+			$('#checkoutLayer').fadeOut();
+			$('#checkoutCard').fadeOut();
+			e.preventDefault();	
+		});
+
+		$('#yesExit').click(function(e){
+			$('#checkoutLayer').fadeOut();
+			$('#checkoutCard').fadeOut();
+			window.location.href="index-dashboard.html";
+			e.preventDefault();	
 		});
 		
 		});
