@@ -295,11 +295,11 @@
                           <h3 style="margin-top: 50px; margin-bottom: 20px;">2 Diskusi</h3>
                           <div id="comment">
                             <div class="mainComment">
-                              <div class="float-right">
-                                <a href="#"><i class="far fa-thumbs-up"></i></a>
-                                <span>+6</span>
-                                <a href="#"><i style="margin-left: 20px" class="far fa-thumbs-down"></i></a>
-                                <span>0</span>
+                                <div class="float-right">
+                                  <a href="#"><i class="far fa-thumbs-up"></i></a>
+                                  <span>+6</span>
+                                  <a href="#"><i style="margin-left: 20px" class="far fa-thumbs-down"></i></a>
+                                  <span>0</span>
                                 </div>
                                 <div class="d-flex profile">
                                   <img id="profileImage" src="assets/imgs/users/d1.jpg" class="rounded-circle mr-3" width="auto" height="50vh">
@@ -308,11 +308,18 @@
                                     <p id="dateComment" class="font-14">September, 30th 2018</p>
                                   </div>
                                 </div>
-                                <p class="pt-3 pb-0 mb-0" id="commentText">Menurutku, bukannya kelas A harusnya relasi komposisi dengan kelas B?</p>
-                                <a href="#" class="float-right">Balas</a>
+                                <p class="pt-3 pb-0" id="commentText">Menurutku, bukannya kelas A harusnya relasi komposisi dengan kelas B?</p>
+                                <!-- <a href="#" class="float-right">Balas</a> -->
+                                <button class="btn btn-primary" onclick="openReply(1)">Balas</button>
+                                <div class="row mt-3" id="reply1" style="display:none">
+                                  <div class="col-md-12">
+                                          <textarea class="form-control" style="resize: vertical" id="comment1" name="comment1" placeholder="Tulis Komentar" ></textarea>
+                                          <button class="btn btn-primary mt-2 float-right" onclick="replySubmit()">Kirim</button>
+                                  </div>
+                                </div>
                               </div>
                               <div class="row justify-content-end">
-                                  <div class="col-md-9 mt-5">
+                                  <div class="col-md-10 mt-5">
                                     <div id="commentReply">
                                       <div class="float-right">
                                         <a href="#"><i class="far fa-thumbs-up"></i></a>
@@ -327,10 +334,11 @@
                                           <p id="dateComment" class="font-14">October, 2nd 2018</p>
                                         </div>
                                       </div>
-                                      <p class="pt-3 pb-0 mb-0" id="commentText">Mungkin kamu perlu lihat lagi pengertian relasi komposisi</p>
-                                      <a href="#" class="float-right">Balas</a>
+                                      <p class="pt-3 pb-0" id="commentText">Mungkin kamu perlu lihat lagi pengertian relasi komposisi</p>
+                                      <button class="btn btn-primary" onclick="">Balas</button>
                                       <div class="row">
                                         <div class="col-md-12">
+                                          
 
                                         </div>
                                       </div>
@@ -338,47 +346,6 @@
                                   </div>
                                 </div>
                           </div>
-                          <!-- <div class="float-right">
-                              <a href="#"><i class="far fa-thumbs-up"></i></a>
-                              <span>+6</span>
-                              <a href="#"><i style="margin-left: 20px" class="far fa-thumbs-down"></i></a>
-                              <span>0</span>
-                              <div>
-                              </div>
-                            </div>
-                          <div class="d-flex profile">
-                              <img id="profileImage" src="https://via.placeholder.com/50" class="rounded-circle mr-3" width="auto" height="50vh"> 
-                              <div class="profile-identity">
-                                  <h5 id="userImage" class="font-weight-bold">John Doe</h5>
-                                  <p id="dateComment" class="font-16">September, 30th 2018</p> 
-                              </div>
-                          </div>
-                          <p class="pb-0 mb-0">Menurutku, bukannya kelas A harusnya relasi komposisi dengan kelas B?</p>
-                          <a href="#" class="float-right">Balas</a> -->
-                          <!-- <button class="btn btn-primary bbtn-primary rounded pr-4 pl-4" type="button">Reply</button> -->
-
-                          <!-- <div>
-                          <img src="https://via.placeholder.com/50" class="rounded-circle" style="margin-bottom: 15px; margin-right: 20px">
-                          <div class="float-right">
-                            <a href="#"><i class="far fa-thumbs-up"></i></a>
-                            <span>+6</span>
-                            <a href="#"><i style="margin-left: 20px" class="far fa-thumbs-down"></i></a>
-                            <span>0</span>
-                            <div>
-                              <button class="btn-outline-secondary" style="float: right; margin-top: 10px" onclick="onc()">Reply</button>
-                            </div>
-                          </div>
-                          <h5 class="font-weight-bold">John Doe</h5>
-                          <p>September, 30th 2018</p>
-                          <h6>Menurutku, bukannya kelas A harusnya relasi komposisi dengan kelas B?<h6>
-                              <button class="btn btn-outline-secondary" style="float: right; margin-top: 10px" onclick="onc()">Reply</button>
-                            </div> -->
-                              <!-- <div id="ini" class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Type your comments here">
-                                <div class="input-group-append">
-                                  <button class="btn btn-primary bbtn-primary rounded pr-4 pl-4" type="button">Reply</button>
-                                </div>
-                              </div> -->
                         </div>
                       </form>
                     </div>
@@ -439,6 +406,14 @@
   <script src="plugins/vendors/datatables/jquery.dataTables.min.js"></script>
   <script>
     $('#slimtest1, #slimtest2, #slimtest3, #slimtest4').perfectScrollbar();
+  </script>
+  <script>
+    //Toggling untuk balas komentar user lain
+    function openReply(iCom){
+      // console.log("reply" + iCom);
+      $("#reply"+iCom).toggle();
+      $("#comment"+iCom).focus();   
+    }
   </script>
 </body>
 
