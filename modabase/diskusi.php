@@ -1,6 +1,7 @@
 <?php    
     session_start();
       include 'dataprofil.php';
+      include "koneksi.php";
       if (!isset($_POST['email']) && !isset($_SESSION['email'])) {
       header("Location: index-sign.php");
     }
@@ -286,15 +287,34 @@
                     <div class="col-md-10">
                       <h2 class="weight-500 mt-2" id="atribut">Forum diskusi : Atribut</h2>
                       <h4 class="mb-4">Silahkan berdiskusi mengenai atribut </h4>
-                      <form>
                         <div class="form-group">
                           <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Type your comments . . .">
+                            <form method="POST" action="submitcomment.php">
+                            <input type="text" class="form-control" placeholder="Type your comments . . ." name="comment">
                             <button type="submit" style="float: right; margin-top: 20px; margin-bottom: 20px" class="btn btn-primary">Kirim</button>
+                            </form>
                           </div>
-                          <h3 style="margin-top: 50px; margin-bottom: 20px;">2 Diskusi</h3>
+                          <?php 
+                            $querysemua = mysqli_query($conn,"SELECT * FROM `comment`");
+                            $hasilsemua =mysqli_num_rows($querysemua);
+                          ?>
+                          <h3 style="margin-top: 50px; margin-bottom: 20px;"><?php echo $hasilsemua ?> Diskusi</h3> 
+                          <!-- menampilkan diskusi dari DB -->
+                          <?php 
+                            $query = mysqli_query($conn,"SELECT * FROM `comment` where idcomment != ''");
+                            $hasil =mysqli_num_rows($query);
+                            if ($hasil == 0) {
+                                $_SESSION['idcomment'] = 1;
+                            }
+                            if ($hasil != 0) {
+                              while ($data1 = mysqli_fetch_array($query)){
+                                  $query2 = mysqli_query($conn,"SELECT * FROM `akun` WHERE `email` = '$data1[email]'");
+                                  $data2 = mysqli_fetch_array($query2);
+                          ?>
+
+                          
                           <div id="comment">
-                            <div class="mainComment">
+                            <div class="mainComment mt-5 mb-5">
                                 <div class="float-right">
                                   <a href="#"><i class="far fa-thumbs-up"></i></a>
                                   <span>+6</span>
@@ -302,24 +322,38 @@
                                   <span>0</span>
                                 </div>
                                 <div class="d-flex profile">
-                                  <img id="profileImage" src="assets/imgs/users/d1.jpg" class="rounded-circle mr-3" width="auto" height="50vh">
+                                  <img id="profileImage" src="assets/imgs/users/<?php echo $data2['foto'] ?>" class="rounded-circle mr-3" width="auto" height="50vh">
                                   <div class="profile-identity">
-                                    <h6 id="userImage" class="font-weight-bold mb-0">Sugeng</h6>
+                                    <h6 id="userImage" class="font-weight-bold mb-0"><?php echo $data2['namad'] ?></h6>
                                     <p id="dateComment" class="font-14">September, 30th 2018</p>
                                   </div>
                                 </div>
-                                <p class="pt-3 pb-0" id="commentText">Menurutku, bukannya kelas A harusnya relasi komposisi dengan kelas B?</p>
+                                <p class="pt-3 pb-0" id="commentText"><?php echo $data1['isicomment'];?></p>
                                 <!-- <a href="#" class="float-right">Balas</a> -->
-                                <button class="btn btn-primary" onclick="openReply(1)">Balas</button>
-                                <div class="row mt-3" id="reply1" style="display:none">
+                                <a onclick="openReply(<?php echo  $_SESSION['idcomment']; ?>)"><button class="btn btn-primary" >Balas</button></a>
+                                <div class="row mt-3" id="reply<?php echo  $_SESSION['idcomment']; ?>" style="display:none">
                                   <div class="col-md-12">
+                                      <form method="POST" action="submitreply.php">
+                                          <input type="hidden" value="<?php echo $data1['idcomment']; ?>" name="idcomment"></input>
                                           <textarea class="form-control" style="resize: vertical" id="comment1" name="comment1" placeholder="Tulis Komentar" ></textarea>
                                           <button class="btn btn-primary mt-2 float-right" onclick="replySubmit()">Kirim</button>
-                                  </div>
+                                      </form>     
+                                   </div>  
                                 </div>
                               </div>
+
+                             <?php 
+                                  $dataa=$data1['idcomment'];
+                                  $queryreply = mysqli_query($conn,"SELECT * FROM `comment` where idreply = '$dataa'");
+                                  $hasilreply =mysqli_num_rows($queryreply);
+                                  if ($hasilreply != 0){
+                                    while ($datareply = mysqli_fetch_array($queryreply)){
+                                    $queryreply2 = mysqli_query($conn,"SELECT * FROM `akun` WHERE `email` = '$datareply[email]'");
+                                    $datareply2 = mysqli_fetch_array($queryreply2);
+                              ?>
+                              
                               <div class="row justify-content-end">
-                                  <div class="col-md-10 mt-5">
+                                  <div class="col-md-10">
                                     <div id="commentReply">
                                       <div class="float-right">
                                         <a href="#"><i class="far fa-thumbs-up"></i></a>
@@ -328,26 +362,34 @@
                                         <span>0</span>
                                       </div>
                                       <div class="d-flex profile">
-                                        <img id="profileImage" src="assets/imgs/users/avatar-1.jpg" class="rounded-circle mr-3" width="auto" height="50vh">
+                                        <img id="profileImage" src="assets/imgs/users/<?php echo $datareply2['foto']; ?>" class="rounded-circle mr-3" width="auto" height="50vh">
                                         <div class="profile-identity">
-                                          <h6 id="userImage" class="font-weight-bold mb-0">Jatmika</h6>
+                                          <h6 id="userImage" class="font-weight-bold mb-0"><?php echo $datareply2['namad']; ?></h6>
                                           <p id="dateComment" class="font-14">October, 2nd 2018</p>
                                         </div>
                                       </div>
-                                      <p class="pt-3 pb-0" id="commentText">Mungkin kamu perlu lihat lagi pengertian relasi komposisi</p>
+                                      <p class="pt-3 pb-0" id="commentText"><?php echo $datareply['isireply']; ?></p>
                                       <button class="btn btn-primary" onclick="">Balas</button>
                                       <div class="row">
                                         <div class="col-md-12">
-                                          
-
                                         </div>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
+                             
+                              <?php 
+                                      }
+                                    }
+                                    $_SESSION['idcomment'] =  $_SESSION['idcomment'] + 1;
+                                  }
+                                }
+                                
+                              ?>
+
+                              <!-- akhir menampilkan diskusi dari DB -->
                           </div>
                         </div>
-                      </form>
                     </div>
                   </div>
                 </div>
@@ -366,6 +408,7 @@
   <!-- Bootstrap popper Core JavaScript -->
   <script src="plugins/vendors/bootstrap/js/popper.min.js"></script>
   <script src="plugins/vendors/bootstrap/js/bootstrap.min.js"></script>
+  <script>console.log</script>
   <script>
     function toggleIcon(e) {
       $(e.target)

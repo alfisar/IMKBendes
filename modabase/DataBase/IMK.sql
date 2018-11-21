@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 19, 2018 at 05:06 PM
+-- Generation Time: Nov 21, 2018 at 12:23 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -43,7 +43,9 @@ CREATE TABLE `akun` (
 --
 
 INSERT INTO `akun` (`email`, `password`, `namad`, `namab`, `lokasi`, `tentang`, `foto`) VALUES
-('alfisar589@gmail.com', 'alfisarr', 'alfisar', 'rachman', 'bogor', 'hiya hiya hiyaaaaa', '');
+('alfisar589@gmail.com', 'alfisarr', 'alfisar', 'rachman', 'bogor', 'hiya hiya hiiiiiiiiyaaa', 'PasPoto.jpg'),
+('alfisar123@gmail.ocm', 'alfi123', 'alfi', 'sar', 'bandung', 'hiya hiya hiya hiyaaaaaa', 'Non-formal.jpg'),
+('coba@gmail.com', 'coba', 'coba', 'ya', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -52,11 +54,12 @@ INSERT INTO `akun` (`email`, `password`, `namad`, `namab`, `lokasi`, `tentang`, 
 --
 
 CREATE TABLE `comment` (
-  `username` varchar(20) NOT NULL,
+  `email` varchar(20) NOT NULL,
   `materi` varchar(20) NOT NULL,
   `idcomment` varchar(5) NOT NULL,
   `isicomment` varchar(100) NOT NULL,
-  `balasan` varchar(100) NOT NULL
+  `idreply` varchar(20) NOT NULL,
+  `isireply` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

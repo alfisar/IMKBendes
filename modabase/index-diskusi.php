@@ -273,9 +273,9 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col-md-9">
-                          <h3 class="weight-500 m-b-25" id="atribut">Atribut</h3>
+                          <h3 class="weight-500 m-b-25" >Atribut</h3>
                           <p class="font-16 m-b-30"> ponderum dissentias theophrastus id sed, et suas homero per. Tota erat docendi in usu. Agam officiis has te. </p>
-                          <button class="btn btn-primary bbtn-primary rounded pr-4 pl-4">Diskusi</button>
+                          <button class="btn btn-primary bbtn-primary rounded pr-4 pl-4" id="atribut">Diskusi</button>
                       </div>
                       <div class="col-md-3">
                       <div class="icon-soal" >
@@ -291,7 +291,7 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col-md-9">
-                          <h3 class="weight-500 m-b-25" id="atribut">Kardinalitas</h3>
+                          <h3 class="weight-500 m-b-25" id="kardinalitas">Kardinalitas</h3>
                           <p class="font-16 m-b-30"> ponderum dissentias theophrastus id sed, et suas homero per. Tota erat docendi in usu. Agam officiis has te. </p>
                           <button class="btn btn-primary bbtn-primary rounded pr-4 pl-4">Diskusi</button>
                       </div>
@@ -309,7 +309,7 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col-md-9">
-                          <h3 class="weight-500 m-b-25" id="atribut">Entitas</h3>
+                          <h3 class="weight-500 m-b-25" id="entitas">Entitas</h3>
                           <p class="font-16 m-b-30"> ponderum dissentias theophrastus id sed, et suas homero per. Tota erat docendi in usu. Agam officiis has te. </p>
                           <button class="btn btn-primary bbtn-primary rounded pr-4 pl-4">Diskusi</button>
                       </div>
@@ -411,6 +411,9 @@ $('.panel-group').on('shown.bs.collapse', toggleIcon);
 <script src="plugins/vendors/styleswitcher/jQuery.style.switcher.js"></script>
 <script src="plugins/vendors/datatables/jquery.dataTables.min.js"></script>
 <script>
+    $('#atribut').click(function () {
+			window.location.href = 'diskusi.php';
+	});
    $(function() {
        $('#myTable').DataTable();
            var table = $('#example').DataTable({
