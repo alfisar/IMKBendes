@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 21, 2018 at 12:23 PM
+-- Generation Time: Nov 21, 2018 at 06:05 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -56,11 +56,17 @@ INSERT INTO `akun` (`email`, `password`, `namad`, `namab`, `lokasi`, `tentang`, 
 CREATE TABLE `comment` (
   `email` varchar(20) NOT NULL,
   `materi` varchar(20) NOT NULL,
-  `idcomment` varchar(5) NOT NULL,
-  `isicomment` varchar(100) NOT NULL,
-  `idreply` varchar(20) NOT NULL,
-  `isireply` varchar(100) NOT NULL
+  `iduser` varchar(20) NOT NULL,
+  `isicomment` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `comment`
+--
+
+INSERT INTO `comment` (`email`, `materi`, `iduser`, `isicomment`) VALUES
+('alfisar589@gmail.com', 'atribut', 'u1', 'pengaruh atribut asosiatif gimana sih ?'),
+('alfisar589@gmail.com', 'atribut', 'u2', '');
 
 -- --------------------------------------------------------
 
@@ -69,12 +75,32 @@ CREATE TABLE `comment` (
 --
 
 CREATE TABLE `notif` (
-  `username` varchar(20) NOT NULL,
-  `suka` int(11) NOT NULL,
-  `balasan` varchar(100) NOT NULL,
+  `idnotif` varchar(20) NOT NULL,
+  `email` varchar(20) NOT NULL,
+  `iduser` varchar(20) NOT NULL,
+  `idsuka` varchar(11) NOT NULL,
+  `idtidak` varchar(20) NOT NULL,
   `materi` varchar(20) NOT NULL,
-  `idcomment` varchar(5) NOT NULL
+  `balasan` varchar(100) NOT NULL,
+  `idreply` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `notif`
+--
+
+INSERT INTO `notif` (`idnotif`, `email`, `iduser`, `idsuka`, `idtidak`, `materi`, `balasan`, `idreply`) VALUES
+('1', 'alfisar589@gmail.com', 'u1', '', '', 'atribut', 'hahaha', 'u2'),
+('2', 'alfisar589@gmail.com', '', 'u1', '', 'atribut', '', ''),
+('3', 'alfisar589@gmail.com', '', 'u1', '', 'atribut', '', ''),
+('4', 'alfisar589@gmail.com', '', 'u2', '', 'atribut', '', ''),
+('6', 'alfisar589@gmail.com', '', '', 'u1', 'atribut', '', ''),
+('6', 'alfisar589@gmail.com', '', '', 'u2', 'atribut', '', ''),
+('7', 'alfisar123@gmail.ocm', '', 'u1', '', 'atribut', '', ''),
+('8', 'alfisar123@gmail.ocm', '', '', 'u2', 'atribut', '', ''),
+('9', 'alfisar589@gmail.com', '', 'u1', '', 'atribut', '', ''),
+('10', 'alfisar123@gmail.ocm', '', 'u1', '', 'atribut', '', ''),
+('11', 'alfisar123@gmail.ocm', '', 'u1', '', 'atribut', '', '');
 
 -- --------------------------------------------------------
 

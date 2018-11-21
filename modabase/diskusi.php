@@ -294,19 +294,23 @@
                             <button type="submit" style="float: right; margin-top: 20px; margin-bottom: 20px" class="btn btn-primary">Kirim</button>
                             </form>
                           </div>
+
                           <?php 
                             $querysemua = mysqli_query($conn,"SELECT * FROM `comment`");
                             $hasilsemua =mysqli_num_rows($querysemua);
                           ?>
+
                           <h3 style="margin-top: 50px; margin-bottom: 20px;"><?php echo $hasilsemua ?> Diskusi</h3> 
+                          
                           <!-- menampilkan diskusi dari DB -->
                           <?php 
-                            $query = mysqli_query($conn,"SELECT * FROM `comment` where idcomment != ''");
+                            $query = mysqli_query($conn,"SELECT * FROM `comment` where isicomment != ''");
                             $hasil =mysqli_num_rows($query);
                             if ($hasil == 0) {
                                 $_SESSION['idcomment'] = 1;
                             }
                             if ($hasil != 0) {
+                              $_SESSION['idcomment'] = 1;
                               while ($data1 = mysqli_fetch_array($query)){
                                   $query2 = mysqli_query($conn,"SELECT * FROM `akun` WHERE `email` = '$data1[email]'");
                                   $data2 = mysqli_fetch_array($query2);
@@ -314,12 +318,29 @@
 
                           
                           <div id="comment">
-                            <div class="mainComment mt-5 mb-5">
+                            <div class="mainComment mt-5">
                                 <div class="float-right">
-                                  <a href="#"><i class="far fa-thumbs-up"></i></a>
-                                  <span>+6</span>
-                                  <a href="#"><i style="margin-left: 20px" class="far fa-thumbs-down"></i></a>
-                                  <span>0</span>
+                                  <a href="submitreply.php?uid=<?php echo $data1['iduser'];?>"><i class="far fa-thumbs-up"></i></a>
+                                    <span>
+                                       +
+                                        <!-- menghitung banyaknya like pada tabel notif dengan id yang sesuai -->
+                                        <?php 
+                                            $user = $data1['iduser'];
+                                            $queryreply3 = mysqli_query($conn,"SELECT * FROM `notif` where idsuka = '$user'");
+                                            $hasilreply3 =mysqli_num_rows($queryreply3);
+                                            echo $hasilreply3;
+                                        ?>
+                                        <!-- akhir menghitung banyaknya like pada tabel notif dengan id yang sesuai -->
+                                    </span>
+                                  <a href="submitreply.php?uidd=<?php echo $data1['iduser'];?>"><i style="margin-left: 20px" class="far fa-thumbs-down"></i></a>
+                                  <span>
+                                        <?php 
+                                            $user = $data1['iduser'];
+                                            $queryreply3 = mysqli_query($conn,"SELECT * FROM `notif` where idtidak = '$user'");
+                                            $hasilreply3 =mysqli_num_rows($queryreply3);
+                                            echo $hasilreply3;
+                                        ?>
+                                  </span>
                                 </div>
                                 <div class="d-flex profile">
                                   <img id="profileImage" src="assets/imgs/users/<?php echo $data2['foto'] ?>" class="rounded-circle mr-3" width="auto" height="50vh">
@@ -334,7 +355,7 @@
                                 <div class="row mt-3" id="reply<?php echo  $_SESSION['idcomment']; ?>" style="display:none">
                                   <div class="col-md-12">
                                       <form method="POST" action="submitreply.php">
-                                          <input type="hidden" value="<?php echo $data1['idcomment']; ?>" name="idcomment"></input>
+                                          <input type="hidden" value="<?php echo $data1['iduser']; ?>" name="idcomment"></input>
                                           <textarea class="form-control" style="resize: vertical" id="comment1" name="comment1" placeholder="Tulis Komentar" ></textarea>
                                           <button class="btn btn-primary mt-2 float-right" onclick="replySubmit()">Kirim</button>
                                       </form>     
@@ -342,9 +363,9 @@
                                 </div>
                               </div>
 
-                             <?php 
-                                  $dataa=$data1['idcomment'];
-                                  $queryreply = mysqli_query($conn,"SELECT * FROM `comment` where idreply = '$dataa'");
+                             <?php        
+                                  $dataa=$data1['iduser'];
+                                  $queryreply = mysqli_query($conn,"SELECT * FROM `notif` where iduser = '$dataa'");
                                   $hasilreply =mysqli_num_rows($queryreply);
                                   if ($hasilreply != 0){
                                     while ($datareply = mysqli_fetch_array($queryreply)){
@@ -353,13 +374,30 @@
                               ?>
                               
                               <div class="row justify-content-end">
-                                  <div class="col-md-10">
+                                  <div class="col-md-10 mt-5">
                                     <div id="commentReply">
                                       <div class="float-right">
-                                        <a href="#"><i class="far fa-thumbs-up"></i></a>
-                                        <span>+3</span>
-                                        <a href="#"><i style="margin-left: 20px" class="far fa-thumbs-down"></i></a>
-                                        <span>0</span>
+                                        <a href="submitreply.php?uid=<?php echo $datareply['idreply']?>"><i class="far fa-thumbs-up"></i></a>
+                                        <span>
+                                            +
+                                            <!-- menghitung banyaknya like pada tabel notif dengan id yang sesuai -->
+                                            <?php 
+                                                $reply = $datareply['idreply'];
+                                                $queryreply3 = mysqli_query($conn,"SELECT * FROM `notif` where idsuka = '$reply'");
+                                                $hasilreply3 =mysqli_num_rows($queryreply3);
+                                                echo $hasilreply3;
+                                            ?>
+                                            <!-- akhir menghitung banyaknya like pada tabel notif dengan id yang sesuai -->
+                                        </span>
+                                        <a href="submitreply.php?uidd=<?php echo $datareply['idreply']?>"><i style="margin-left: 20px" class="far fa-thumbs-down"></i></a>
+                                        <span>
+                                            <?php 
+                                                $reply = $datareply['idreply'];
+                                                $queryreply3 = mysqli_query($conn,"SELECT * FROM `notif` where idtidak = '$reply'");
+                                                $hasilreply3 =mysqli_num_rows($queryreply3);
+                                                echo $hasilreply3;
+                                            ?>
+                                        </span>
                                       </div>
                                       <div class="d-flex profile">
                                         <img id="profileImage" src="assets/imgs/users/<?php echo $datareply2['foto']; ?>" class="rounded-circle mr-3" width="auto" height="50vh">
@@ -368,7 +406,7 @@
                                           <p id="dateComment" class="font-14">October, 2nd 2018</p>
                                         </div>
                                       </div>
-                                      <p class="pt-3 pb-0" id="commentText"><?php echo $datareply['isireply']; ?></p>
+                                      <p class="pt-3 pb-0" id="commentText"><?php echo $datareply['balasan']; ?></p>
                                       <button class="btn btn-primary" onclick="">Balas</button>
                                       <div class="row">
                                         <div class="col-md-12">
@@ -377,16 +415,15 @@
                                     </div>
                                   </div>
                                 </div>
-                             
-                              <?php 
-                                      }
+                            <?php 
+                                                $_SESSION['idcomment'] =  $_SESSION['idcomment'] + 1;   
+                                            }
+                                        }
+                                        $_SESSION['idcomment'] =  $_SESSION['idcomment'] + 1;
                                     }
-                                    $_SESSION['idcomment'] =  $_SESSION['idcomment'] + 1;
-                                  }
                                 }
-                                
-                              ?>
-
+                             
+                            ?>
                               <!-- akhir menampilkan diskusi dari DB -->
                           </div>
                         </div>
