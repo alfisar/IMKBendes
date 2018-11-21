@@ -159,7 +159,7 @@
 
                         </div>
                       </li>
-                      <li> <a class="nav-link text-center" href="index-notif.html">Lihat semua notifikasi </a> </li>
+                      <li> <a class="nav-link text-center" href="index-notif.php">Lihat semua notifikasi </a> </li>
                     </ul>
                   </div>
                 </li>
@@ -320,7 +320,7 @@
                           <div id="comment">
                             <div class="mainComment mt-5">
                                 <div class="float-right">
-                                  <a href="submitreply.php?uid=<?php echo $data1['iduser'];?>"><i class="far fa-thumbs-up"></i></a>
+                                  <a href="submitreply.php?uid=<?php echo $data1['iduser'];?>&emailT=<?php echo $data1['email']; ?>"><i class="far fa-thumbs-up"></i></a>
                                     <span>
                                        +
                                         <!-- menghitung banyaknya like pada tabel notif dengan id yang sesuai -->
@@ -332,7 +332,7 @@
                                         ?>
                                         <!-- akhir menghitung banyaknya like pada tabel notif dengan id yang sesuai -->
                                     </span>
-                                  <a href="submitreply.php?uidd=<?php echo $data1['iduser'];?>"><i style="margin-left: 20px" class="far fa-thumbs-down"></i></a>
+                                  <a href="submitreply.php?uidd=<?php echo $data1['iduser'];?>&emailT=<?php echo $data1['email']; ?>"><i style="margin-left: 20px" class="far fa-thumbs-down"></i></a>
                                   <span>
                                         <?php 
                                             $user = $data1['iduser'];
@@ -356,6 +356,7 @@
                                   <div class="col-md-12">
                                       <form method="POST" action="submitreply.php">
                                           <input type="hidden" value="<?php echo $data1['iduser']; ?>" name="idcomment"></input>
+                                          <input type="hidden" value="<?php echo $data1['email']; ?>" name="email"></input>
                                           <textarea class="form-control" style="resize: vertical" id="comment1" name="comment1" placeholder="Tulis Komentar" ></textarea>
                                           <button class="btn btn-primary mt-2 float-right" onclick="replySubmit()">Kirim</button>
                                       </form>     
@@ -377,7 +378,7 @@
                                   <div class="col-md-10 mt-5">
                                     <div id="commentReply">
                                       <div class="float-right">
-                                        <a href="submitreply.php?uid=<?php echo $datareply['idreply']?>"><i class="far fa-thumbs-up"></i></a>
+                                        <a href="submitreply.php?uid=<?php echo $datareply['idreply']?>&emailT=<?php echo $datareply['email'];?>"><i class="far fa-thumbs-up"></i></a>
                                         <span>
                                             +
                                             <!-- menghitung banyaknya like pada tabel notif dengan id yang sesuai -->
@@ -389,7 +390,7 @@
                                             ?>
                                             <!-- akhir menghitung banyaknya like pada tabel notif dengan id yang sesuai -->
                                         </span>
-                                        <a href="submitreply.php?uidd=<?php echo $datareply['idreply']?>"><i style="margin-left: 20px" class="far fa-thumbs-down"></i></a>
+                                        <a href="submitreply.php?uidd=<?php echo $datareply['idreply']?>&emailT=<?php echo $datareply['email']?>"><i style="margin-left: 20px" class="far fa-thumbs-down"></i></a>
                                         <span>
                                             <?php 
                                                 $reply = $datareply['idreply'];

@@ -150,7 +150,7 @@
                        
                         </div>
                       </li>
-                      <li> <a class="nav-link text-center" href="index-notif.html">Lihat semua notifikasi </a> </li>
+                      <li> <a class="nav-link text-center" href="index-notif.php">Lihat semua notifikasi </a> </li>
                     </ul>
                   </div>
                 </li>
