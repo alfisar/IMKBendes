@@ -282,7 +282,7 @@
                           }
                       ?>
                       <form action='uploadfoto.php' method='POST' enctype='multipart/form-data'>
-                         <input type='file' name='userFile'><br>
+                          <input type='file' name='userFile'><br>
                           <input type='submit' name='upload_btn' value='upload'>
                       </form>
                       <!-- <button class="btn btn-primary w-100 mt-3 btn-rounded" for="file">Unggah gambar</button> -->
@@ -379,7 +379,8 @@ $('.panel-group').on('shown.bs.collapse', toggleIcon);
 <script src="plugins/vendors/datatables/jquery.dataTables.min.js"></script>
 <script>
    $(function() {
-        $('#nama').val('<?php echo $data['namad'] ?>'+' <?php echo $data['namab'] ?>');
+        $('#namad').val('<?php echo $data['namad'] ?>');
+        $('#namab').val('<?php echo $data['namab'] ?>');
         $('#email').val('<?php echo $data['email'] ?>');
         $('#lokasi').val('<?php echo $data['lokasi']?>');
         $('#tentang').val('<?php echo $data['tentang']?>');
