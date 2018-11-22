@@ -273,7 +273,7 @@
                     <div class="col-md-9">
                         <h3 class="weight-500 m-b-25" id="atribut">Latihan Soal 1</h3>
                         <p class="font-16 m-b-30">Latihan soal berisikan materi tentang : <b>Attibut</b>, <b>Kardinalitas</b></p>
-                        <button class="btn btn-primary bbtn-primary rounded pr-4 pl-4 w-25" id="soal1">Mulai</button>
+                        <a class="btn btn-primary bbtn-primary rounded pr-4 pl-4 w-25" id="soal1" href="latihansoal.php?soal=kardinalitas">Mulai</a>
                     </div>
                     <div class="col-md-3" >
                     <div class="icon-soal" >
@@ -292,7 +292,7 @@
                       <div class="col-md-9">
                           <h3 class="weight-500 m-b-25" id="atribut">Latihan Soal 2</h3>
                           <p class="font-16 m-b-30">Latihan soal berisikan materi tentang : <b>Entitas</b></p>
-                          <button class="btn btn-primary bbtn-primary rounded pr-4 pl-4 w-25" id="soal2" >Mulai</button>
+                          <a class="btn btn-primary bbtn-primary rounded pr-4 pl-4 w-25" id="soal2" href="latihansoal.php?soal=entitas">Mulai</a>
                       </div>
                       <div class="col-md-3">
                       <div class="icon-soal" >

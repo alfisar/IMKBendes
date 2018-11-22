@@ -342,7 +342,49 @@
                   </div>
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-12">   1 => "a",
+   2 => "b",
+   3 => "c",
+   4 => "d",
+   5 => "e",
+   6 => 3
+),
+2 => array(
+   0 => "afaowfjo",
+   1 => "a",
+   2 => "b",
+   3 => "c",
+   4 => "d",
+   5 => "e",
+   6 => 2
+),
+);
+
+$max=2;
+
+$question=$_POST["question"] ;
+
+if ($_POST["Randon"]==0){
+        if($randomizequestions =="yes"){$randval = mt_rand(1,$max);}else{$randval=1;}
+        $randval2 = $randval;
+        }else{
+        $randval=$_POST["Randon"];
+        $randval2=$_POST["Randon"] + $question;
+                if ($randval2>$max){
+                $randval2=$randval2-$max;
+                }
+        }
+        
+$ok=$_POST["ok"] ;
+
+if ($question==0){
+        $question=0;
+        $ok=0;
+        $percentaje=0;
+        }else{
+        $percentaje= Round(100*$ok / $question);
+        }
+?>
                 <div class="card">
                   <div class="card-body">
                     <div class="row">
@@ -374,7 +416,49 @@
 <!-- Bootstrap popper Core JavaScript -->
 <script src="plugins/vendors/bootstrap/js/popper.min.js"></script>
 <script src="plugins/vendors/bootstrap/js/bootstrap.min.js"></script>
-<script>
+<script>   1 => "a",
+   2 => "b",
+   3 => "c",
+   4 => "d",
+   5 => "e",
+   6 => 3
+),
+2 => array(
+   0 => "afaowfjo",
+   1 => "a",
+   2 => "b",
+   3 => "c",
+   4 => "d",
+   5 => "e",
+   6 => 2
+),
+);
+
+$max=2;
+
+$question=$_POST["question"] ;
+
+if ($_POST["Randon"]==0){
+        if($randomizequestions =="yes"){$randval = mt_rand(1,$max);}else{$randval=1;}
+        $randval2 = $randval;
+        }else{
+        $randval=$_POST["Randon"];
+        $randval2=$_POST["Randon"] + $question;
+                if ($randval2>$max){
+                $randval2=$randval2-$max;
+                }
+        }
+        
+$ok=$_POST["ok"] ;
+
+if ($question==0){
+        $question=0;
+        $ok=0;
+        $percentaje=0;
+        }else{
+        $percentaje= Round(100*$ok / $question);
+        }
+?>
 function toggleIcon(e) {
     $(e.target)
         .prev('.card-link')
