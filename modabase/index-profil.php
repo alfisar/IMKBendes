@@ -288,13 +288,18 @@
                       <!-- <button class="btn btn-primary w-100 mt-3 btn-rounded" for="file">Unggah gambar</button> -->
                     </div>
                     <div class="col-md-9">
+                    
                         <form class="form" method="POST" action="submitdata.php">
-                            <div class="form-group m-b-10 row">
-                              <label class="col-12 col-form-label">Nama</label>
-                              <div class="col-12">
-                                <input id="nama" class="form-control" type="text" required>
-                              </div>
-                            </div>
+                        <div class="row form-group m-b-10">
+                          <div class="col">
+                          <label class="col col-form-label pl-0">Nama Depan</label>
+                            <input type="text" class="form-control" placeholder="Nama Depan" id="namad">
+                          </div>
+                          <div class="col">
+                          <label class="col col-form-label pl-0">Nama Belakang</label>
+                            <input type="text" class="form-control" placeholder="Nama Belakang" id="namab">
+                          </div>
+                        </div>
                             <div class="form-group row m-b-10">
                                 <label class="col-12 col-form-label">Email</label>
                                 <div class="col-12">

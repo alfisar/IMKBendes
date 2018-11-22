@@ -221,8 +221,7 @@
                       </div>
                     </li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="index-profil.php"><i class="fas fa-user mr-1"></i> My Profile</a></li>
-                    <li><a href="index-dashboard.html"><i class="fas fa-cog mr-1"></i> Settings</a></li>
+                    <li><a href="index-profil.php"><i class="fas fa-cog mr-1"></i>Pengaturan</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="Logout.php"><i class="fas fa-sign-in-alt mr-1"></i> Logout</a></li>
                   </ul>
