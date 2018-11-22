@@ -3,7 +3,9 @@
       include 'dataprofil.php';
       if (!isset($_POST['email']) && !isset($_SESSION['email'])) {
       header("Location: index-sign.php");
-    }
+      }
+      
+      // echo "<script>alert('".$_SESSION['materi1']."')</script>"; 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -291,9 +293,9 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col-md-9">
-                          <h3 class="weight-500 m-b-25" id="kardinalitas">Kardinalitas</h3>
+                          <h3 class="weight-500 m-b-25" >Kardinalitas</h3>
                           <p class="font-16 m-b-30"> ponderum dissentias theophrastus id sed, et suas homero per. Tota erat docendi in usu. Agam officiis has te. </p>
-                          <button class="btn btn-primary bbtn-primary rounded pr-4 pl-4">Diskusi</button>
+                          <button class="btn btn-primary bbtn-primary rounded pr-4 pl-4" id="kardinalitas">Diskusi</button>
                       </div>
                       <div class="col-md-3">
                       <div class="icon-soal" >
@@ -411,9 +413,13 @@ $('.panel-group').on('shown.bs.collapse', toggleIcon);
 <script src="plugins/vendors/styleswitcher/jQuery.style.switcher.js"></script>
 <script src="plugins/vendors/datatables/jquery.dataTables.min.js"></script>
 <script>
-    $('#atribut').click(function () {
-			window.location.href = 'diskusi.php';
-	});
+    $('#atribut').click(function () { 
+        window.location.href = 'diskusiT.php?materi=atribut';
+      
+	  });
+    $('#kardinalitas').click(function () {
+			window.location.href = 'diskusiT.php?materi=kardinalitas';
+	  });
    $(function() {
        $('#myTable').DataTable();
            var table = $('#example').DataTable({

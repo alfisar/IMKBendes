@@ -130,14 +130,15 @@
                           $i = 1;
                           while (($data2 = mysqli_fetch_array($sql)) && ($i <=3)){
                             $email1 = $data2['email'];
+                            $materi = $data2['materi'];
                             $sql2 = mysqli_query($conn,"SELECT * FROM `akun` where email = '$email1'");
                             $data1 = mysqli_fetch_array($sql2);     
                         ?>
-                        <a href="#">
+                        <a href="diskusi.php">
                           <div class="row">
                               <div class="col-9">
                                   <?php if($data2['iduser'] != ""){  ?>
-                                  <div class="mail-content"><?php echo $data1['namad']; ?> berkomentar pada Diskusi: attribut</div> 
+                                  <div class="mail-content"><?php echo $data1['namad']; ?> berkomentar pada Diskusi: <?php echo $data2['materi'];?></div> 
                                   <?php 
                                       }
                                       else if ($data2['idsuka'] != ""){

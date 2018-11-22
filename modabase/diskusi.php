@@ -2,6 +2,9 @@
     session_start();
       include 'dataprofil.php';
       include "koneksi.php";
+      // echo "<script>alert('".$_SESSION['materi']."')</script>";
+      $materi = $_SESSION['materi'];
+     // echo "<script>alert('$materi')</script>";
       if (!isset($_POST['email']) && !isset($_SESSION['email'])) {
       header("Location: index-sign.php");
     }
@@ -295,8 +298,9 @@
                             </form>
                           </div>
 
-                          <?php 
-                            $querysemua = mysqli_query($conn,"SELECT * FROM `comment`");
+                          <?php
+                                // echo "<script>alert('".$_SESSION['materi']."')</script>";
+                            $querysemua = mysqli_query($conn,"SELECT * FROM `comment` where materi = '$materi'");
                             $hasilsemua =mysqli_num_rows($querysemua);
                           ?>
 
@@ -304,7 +308,7 @@
                           
                           <!-- menampilkan diskusi dari DB -->
                           <?php 
-                            $query = mysqli_query($conn,"SELECT * FROM `comment` where isicomment != ''");
+                            $query = mysqli_query($conn,"SELECT * FROM `comment` where isicomment != ''AND materi = '$materi'");
                             $hasil =mysqli_num_rows($query);
                             if ($hasil == 0) {
                                 $_SESSION['idcomment'] = 1;
@@ -326,7 +330,7 @@
                                         <!-- menghitung banyaknya like pada tabel notif dengan id yang sesuai -->
                                         <?php 
                                             $user = $data1['iduser'];
-                                            $queryreply3 = mysqli_query($conn,"SELECT * FROM `notif` where idsuka = '$user'");
+                                            $queryreply3 = mysqli_query($conn,"SELECT * FROM `notif` where idsuka = '$user' AND materi = '$materi'");
                                             $hasilreply3 =mysqli_num_rows($queryreply3);
                                             echo $hasilreply3;
                                         ?>
@@ -336,7 +340,7 @@
                                   <span>
                                         <?php 
                                             $user = $data1['iduser'];
-                                            $queryreply3 = mysqli_query($conn,"SELECT * FROM `notif` where idtidak = '$user'");
+                                            $queryreply3 = mysqli_query($conn,"SELECT * FROM `notif` where idtidak= '$user' AND materi = '$materi'");
                                             $hasilreply3 =mysqli_num_rows($queryreply3);
                                             echo $hasilreply3;
                                         ?>
@@ -366,7 +370,7 @@
 
                              <?php        
                                   $dataa=$data1['iduser'];
-                                  $queryreply = mysqli_query($conn,"SELECT * FROM `notif` where iduser = '$dataa'");
+                                  $queryreply = mysqli_query($conn,"SELECT * FROM `notif` where iduser = '$dataa' AND materi = '$materi'");
                                   $hasilreply =mysqli_num_rows($queryreply);
                                   if ($hasilreply != 0){
                                     while ($datareply = mysqli_fetch_array($queryreply)){
@@ -384,7 +388,7 @@
                                             <!-- menghitung banyaknya like pada tabel notif dengan id yang sesuai -->
                                             <?php 
                                                 $reply = $datareply['idreply'];
-                                                $queryreply3 = mysqli_query($conn,"SELECT * FROM `notif` where idsuka = '$reply'");
+                                                $queryreply3 = mysqli_query($conn,"SELECT * FROM `notif` where idsuka = '$reply'AND materi = '$materi'");
                                                 $hasilreply3 =mysqli_num_rows($queryreply3);
                                                 echo $hasilreply3;
                                             ?>
@@ -394,7 +398,7 @@
                                         <span>
                                             <?php 
                                                 $reply = $datareply['idreply'];
-                                                $queryreply3 = mysqli_query($conn,"SELECT * FROM `notif` where idtidak = '$reply'");
+                                                $queryreply3 = mysqli_query($conn,"SELECT * FROM `notif` where idtidak = '$reply' AND materi = '$materi'");
                                                 $hasilreply3 =mysqli_num_rows($queryreply3);
                                                 echo $hasilreply3;
                                             ?>
@@ -496,6 +500,10 @@
       $("#comment"+iCom).focus();   
     }
   </script>
+  <!-- <script>
+var d = new Date();
+document.getElementById("demo").innerHTML = d.getDate()+'/'+ (d.getMonth()+1) +'/'+d.getFullYear()
+</script> -->
 </body>
 
 <!-- Mirrored from mintone.xyz/index-projects.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 04 Nov 2018 03:14:08 GMT -->

@@ -5,7 +5,8 @@
     $emailT1 = $_GET['emailT'];
     $email = $_SESSION['email'];  
     $idc = $_SESSION['idcomment'];
-    $idnotif = $_SESSION['idnotif'];  
+    $idnotif = $_SESSION['idnotif'];
+    $materi = $_SESSION['materi'];  
     $comment = $_POST['comment1'];
     $id = $_POST['idcomment'];
     $uid=$_GET['uid'];
@@ -18,14 +19,14 @@
     $_SESSION['idnotif'] = $hitung;
     $idnotif=$_SESSION['idnotif']+1;
     if($uid!=null){
-        $sql = mysqli_query($conn,"INSERT INTO `notif`(`idnotif`, `email`,`iduser`, `idsuka`, `idtidak`, `materi`, `balasan`,`idreply`,`kepada`) VALUES ('$idnotif','$email','','$uid','','atribut','','','$emailT1')");
+        $sql = mysqli_query($conn,"INSERT INTO `notif`(`idnotif`, `email`,`iduser`, `idsuka`, `idtidak`, `materi`, `balasan`,`idreply`,`kepada`) VALUES ('$idnotif','$email','','$uid','','$materi','','','$emailT1')");
     }
     else if ($uidd!=null){
-        $sql = mysqli_query($conn,"INSERT INTO `notif`(`idnotif`, `email`,`iduser`, `idsuka`, `idtidak`, `materi`, `balasan`,`idreply`,`kepada`) VALUES ('$idnotif','$email','','','$uidd','atribut','','','$emailT1')");
+        $sql = mysqli_query($conn,"INSERT INTO `notif`(`idnotif`, `email`,`iduser`, `idsuka`, `idtidak`, `materi`, `balasan`,`idreply`,`kepada`) VALUES ('$idnotif','$email','','','$uidd','$materi','','','$emailT1')");
     }
     else{
-        $sql = mysqli_query($conn,"INSERT INTO `notif`(`idnotif`, `email`,`iduser`, `idsuka`, `idtidak`, `materi`, `balasan`,`idreply`,`kepada`) VALUES ('$idnotif','$email','$id','','','atribut','$comment','u$idc','$emailT')");
-        $sql = mysqli_query($conn,"INSERT INTO `comment`(`email`, `materi`, `iduser`, `isicomment`) VALUES ('$email','atribut','u$idc','')");
+        $sql = mysqli_query($conn,"INSERT INTO `notif`(`idnotif`, `email`,`iduser`, `idsuka`, `idtidak`, `materi`, `balasan`,`idreply`,`kepada`) VALUES ('$idnotif','$email','$id','','','$materi','$comment','u$idc','$emailT')");
+        $sql = mysqli_query($conn,"INSERT INTO `comment`(`email`, `materi`, `iduser`, `isicomment`) VALUES ('$email','$materi','u$idc','')");
     }
     header("Location: diskusi.php");
 

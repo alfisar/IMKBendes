@@ -134,7 +134,7 @@
                             $data5 = mysqli_fetch_array($sql5);
                             $emailT1 = $data5['namad'];    
                         ?>
-                        <a href="#">
+                        <a href="diskusi.php">
                           <div class="row">
                               <div class="col-9">
                                   <?php if($data4['iduser'] != ""){  ?>
@@ -269,7 +269,7 @@
               </ul>
             </li>
             <li><a href="index-soal.php"><i class="flaticon-pencil-edit-button"></i><span class="hide-menu">Soal</span></a></li>
-            <li><a href="index-diskusi.php"><i class="flaticon-speech"></i><span class="hide-menu">Diskusi</span></a></li>
+            <li><a href="index-diskusi.html"><i class="flaticon-speech"></i><span class="hide-menu">Diskusi</span></a></li>
           </ul>
         </nav>
         <!-- End Sidebar navigation -->
@@ -309,7 +309,7 @@
                                         $sql1 = mysqli_query($conn,"SELECT * FROM `akun` where email = '$email1'");
                                         $data1 = mysqli_fetch_array($sql1);     
                             ?>
-                              <a href="#">
+                              <a href="diskusi.php">
                                 <div class="row">
                                     <div class="col-9">
                                         <?php if($data2['iduser'] != ""){  ?>
@@ -459,6 +459,12 @@ $('.panel-group').on('shown.bs.collapse', toggleIcon);
 <script>
 $('#slimtest1, #slimtest2, #slimtest3, #slimtest4').perfectScrollbar();
 </script>
+
+<!-- <script>
+var d = new Date();
+document.getElementById("demo").innerHTML = d.getDate()+'/'+ (d.getMonth()+1) +'/'+d.getFullYear()
+</script> -->
+
 </body>
 
 <!-- Mirrored from mintone.xyz/index-projects.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 04 Nov 2018 03:14:08 GMT -->
