@@ -20,7 +20,7 @@
 <meta name="author" content="Modabase">
 <!-- Favicon icon -->
 <link rel="icon" type="image/png" sizes="16x16" href="assets/imgs/favicon.png">
-<title>Admin Mintone - Bootstrap 4 Admin Template</title>
+<title>Modabase - E-Learning Pemodelan Basis data</title>
 <!-- Bootstrap Core CSS -->
 <link href="plugins/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="plugins/vendors/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
@@ -66,7 +66,7 @@
   <!-- ============================================================== -->
   <!-- Topbar header - style you can find in pages.scss -->
   <!-- ============================================================== -->
-  <header class="topbar">
+   <header class="topbar">
     <div class="container">
       <nav class="navbar top-navbar navbar-expand-md navbar-light">
         <!-- ============================================================== -->
@@ -84,134 +84,162 @@
         <!-- End Logo -->
         <!-- ============================================================== -->
         <div class="top-bar-main">
-            <!-- ============================================================== -->
-            <!-- toggle and nav items -->
-            <!-- ============================================================== -->
-            <div class="float-left">
-              <ul class="navbar-nav">
-                <li class="nav-item "><a class="nav-link navbar-toggler navbar-top-on sidebartoggler waves-effect waves-dark float-right" href="javascript:void(0)"><span class="navbar-toggler-icon"></span></a></li>
-                <!-- ============================================================== -->
-                <!-- Search -->
-                <!-- ============================================================== -->
-                <!-- <li class="nav-item hidden-xs-down app-search">
-                  <input type="text" class="form-control float-left" placeholder="Type for search...">
-                </li> -->
-                <li class="nav-item hidden-xs-down"> <a class="nav-link navbar-toggler sidebartoggler hidden-xs-down waves-effect waves-dark float-right" href="javascript:void(0)"><span class="navbar-toggler-icon"></span></a> </li>
-              </ul>
-            </div>
-            <!-- ============================================================== -->
-            <!-- User profile and search -->
-            <!-- ============================================================== -->
-            <div class="float-right pr-3">
-              <ul class="navbar-nav my-lg-0 float-right">
-                <!-- ============================================================== -->
-                <!-- Comment -->
-                <!-- ============================================================== -->
-                <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-bell"></i>
-                  <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right mailbox animated fadeIn">
-                    <ul>
-                      <li>
-                        <div class="drop-title">Anda punya <span class="highlighted">3 notifikasi</span> baru</div>
-                      </li>
-                      <li>
-                        <div class="message-center">
-                          <!-- Message -->
-                          <a href="#">
-                            <div class="row">
-                                <div class="col-9">
-                                    <div class="mail-content">Alisha menyukai komentar anda</div>
-                                </div>
-                                <div class="col-3">
-                                    <span class="float-right text-light">11.08.2018</span>
-                                </div>
-                            </div>
-                          </a>
-                          <a href="#">
+          <!-- ============================================================== -->
+          <!-- toggle and nav items -->
+          <!-- ============================================================== -->
+          <div class="float-left">
+            <ul class="navbar-nav">
+              <li class="nav-item "><a class="nav-link navbar-toggler navbar-top-on sidebartoggler waves-effect waves-dark float-right" href="javascript:void(0)"><span class="navbar-toggler-icon"></span></a></li>
+              <!-- ============================================================== -->
+              <!-- Search -->
+              <!-- ============================================================== -->
+              <!-- <li class="nav-item hidden-xs-down app-search">
+                <input type="text" class="form-control float-left" placeholder="Type for search...">
+              </li> -->
+              <li class="nav-item hidden-xs-down"> <a class="nav-link navbar-toggler sidebartoggler hidden-xs-down waves-effect waves-dark float-right" href="javascript:void(0)"><span class="navbar-toggler-icon"></span></a> </li>
+            </ul>
+          </div>
+          <!-- ============================================================== -->
+          <!-- User profile and search -->
+          <!-- ============================================================== -->
+          <div class="float-right pr-3">
+            <ul class="navbar-nav my-lg-0 float-right">
+              <!-- ============================================================== -->
+              <!-- Comment -->
+              <!-- ============================================================== -->
+              <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle waves-effect waves-dark note" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-bell"></i>
+                <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right mailbox animated fadeIn">
+                  <ul>
+                    <li>
+                      <?php 
+                        $email = $_SESSION['email'];
+                        $sql = mysqli_query($conn,"SELECT * FROM `notif` where kepada = '$email' AND idtidak = '' ORDER BY idnotif DESC");
+                        $hasil =mysqli_num_rows($sql);
+                        if($hasil == 0){
+                      ?>
+                            <div class="drop-title text-secondary text-center pt-3 pb-3">Tidak ada Notifikasi</div>
+                      <?php 
+                        }
+                        else if ($hasil <= 3 ){
+                      ?>
+                      <div class="drop-title">Anda punya <span class="highlighted"><?php echo $hasil; ?> notifikasi</span> baru</div>
+                      <?php 
+                        }
+                        else{
+                      ?>
+                      <div class="drop-title">Anda punya <span class="highlighted">3 notifikasi</span> baru</div>
+                        <?php }?>
+                    </li>
+                    <li>
+                      <div class="message-center">
+                        <!-- Message -->
+                        <?php 
+                          $i = 1;
+                          while (($data2 = mysqli_fetch_array($sql)) && ($i <=3)){
+                            $email1 = $data2['email'];
+                            $materi = $data2['materi'];
+                            $sql2 = mysqli_query($conn,"SELECT * FROM `akun` where email = '$email1'");
+                            $data1 = mysqli_fetch_array($sql2);     
+                        ?>
+                        <a href="diskusi.php">
+                          <div class="row">
+                              <div class="col-9">
+                                  <?php if($data2['iduser'] != ""){  ?>
+                                  <div class="mail-content"><?php echo $data1['namad']; ?> berkomentar pada Diskusi: <?php echo $data2['materi'];?></div> 
+                                  <?php 
+                                      }
+                                      else if ($data2['idsuka'] != ""){
+                                  ?>
+                                  <div class="mail-content"><?php echo $data1['namad']; ?> menyukai komentar anda</div>
+                                  <?php }?>
+                              </div>
+                              <div class="col-3">
+                                  <span class="float-right text-light">11.08.2018</span>
+                              </div>
+                          </div>
+                        </a>
+                        <?php       
+                              $i = $i +1;
+                            }
+                        ?>
+                          
+                          <!-- <a href="#">
                               <div class="row">
                                   <div class="col-9">
-                                      <div class="mail-content">Bryan berkomentar pada Diskusi: attribut</div>
+                                      <div class="mail-content">Alisha menyukai komentar anda</div>
                                   </div>
                                   <div class="col-3">
                                       <span class="float-right text-light">11.08.2018</span>
                                   </div>
                               </div>
-                            </a>
-                            <a href="#">
-                                <div class="row">
-                                    <div class="col-9">
-                                        <div class="mail-content">Alisha menyukai komentar anda</div>
-                                    </div>
-                                    <div class="col-3">
-                                        <span class="float-right text-light">11.08.2018</span>
-                                    </div>
-                                </div>
-                              </a>
-                          
-                       
-                        </div>
-                      </li>
-                      <li> <a class="nav-link text-center" href="index-notif.php">Lihat semua notifikasi </a> </li>
-                    </ul>
-                  </div>
-                </li>
-                <!-- ============================================================== -->
-                <!-- End Comment -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- End mega menu -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Profile -->
-                <!-- ============================================================== -->
-                <?php 
+                            </a> -->
+                        
+                     
+                      </div>
+                    </li>
+                    <li> <a class="nav-link text-center" href="index-notif.php">Lihat semua notifikasi </a> </li>
+                  </ul>
+                </div>
+              </li>
+              <!-- ============================================================== -->
+              <!-- End Comment -->
+              <!-- ============================================================== -->
+              <!-- ============================================================== -->
+              <!-- End mega menu -->
+              <!-- ============================================================== -->
+              <!-- ============================================================== -->
+              <!-- Profile -->
+              <!-- ============================================================== -->
+              <?php 
                   if($data['foto'] != ""){
-                ?>
-                <li class="nav-item dropdown u-pro"> <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/imgs/users/<?php echo $data['foto']?>" alt="user" class="" /></a>
-                <?php 
+              ?>
+              <li class="nav-item dropdown u-pro"> <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/imgs/users/<?php echo $data['foto']?>" alt="user" class="" /></a>
+              <?php 
                   }
                   else { 
-                ?> 
-                <li class="nav-item dropdown u-pro"> <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/imgs/users/profile-img.jpg" alt="user" class="" /></a> 
-                <?php 
+              ?> 
+              <li class="nav-item dropdown u-pro"> <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/imgs/users/no-pic.jpg" alt="user" class="" /></a> 
+              <?php 
                   }
-                ?>
+              ?>  
+              
+                <div class="dropdown-menu dropdown-menu-right animated fadeIn">
+                  <ul class="dropdown-user">
+                    <li class="text-center">
+                      <div class="dw-user-box">
+                      
+                      <?php 
+                        if($data['foto'] != ""){
+                      ?>
+                      <div class="u-img"><img src="assets/imgs/users/<?php echo $data['foto']?>" alt="user"></div>
+                      <?php 
+                          }
+                          else { 
+                      ?>
+                      <div class="u-img"><img src="assets/imgs/users/no-pic.jpg" alt="user"></div>
+                      <?php 
+                          }
+                      ?>
 
-                  <div class="dropdown-menu dropdown-menu-right animated fadeIn">
-                    <ul class="dropdown-user">
-                      <li class="text-center">
-                        <div class="dw-user-box">
-                          <?php 
-                            if($data['foto'] != ""){
-                          ?>
-                          <div class="u-img"><img src="assets/imgs/users/<?php echo $data['foto']?>" alt="user"></div>
-                          <?php 
-                            }
-                            else { 
-                          ?>
-                          <div class="u-img"><img src="assets/imgs/users/profile-img.jpg" alt="user"></div>
-                          <?php 
-                            }
-                          ?>
-                          <div class="clearfix"></div>
-                          <div class="u-text">
-                            <h4><?php echo $data['namad'] ?></h4>
-                          </div>
+                        <div class="clearfix"></div>
+                        <div class="u-text p-0 pt-3">
+                          <h4><?php echo $data['namad']?></h4>
                         </div>
-                      </li>
-                      <li role="separator" class="divider"></li>
-                      <li><a href="index-profil.php"><i class="fas fa-user mr-1"></i> My Profile</a></li>
-                      <li><a href="#"><i class="fas fa-cog mr-1"></i> Settings</a></li>
-                      <li role="separator" class="divider"></li>
-                      <li><a href="Logout.php"><i class="fas fa-sign-in-alt mr-1"></i> Logout</a></li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="clearfix"></div>
+                      </div>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="index-profil.php"><i class="fas fa-cog mr-1"></i>Pengaturan</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="Logout.php"><i class="fas fa-sign-in-alt mr-1"></i> Logout</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
           </div>
+          <div class="clearfix"></div>
+        </div>
       </nav>
     </div>
   </header>
@@ -236,10 +264,10 @@
             </li>
             <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="flaticon-forms"></i><span class="hide-menu">Materi</span></a>
               <ul aria-expanded="false" class="collapse">
-                <li><a href="index-materi.html#pengenalan">1.Pengenalan</a></li>
-                  <li><a href="index-materi.html#atribut">2.Atribut</a></li>
-                  <li><a href="index-materi.html#kardinalitas">3.Kardinalitas</a></li>
-                  <li><a href="index-materi.html#entitas">4.Entitas</a></li>
+                <li><a href="index-materi.php#pengenalan">1.Pengenalan</a></li>
+                  <li><a href="index-materi.php#atribut">2.Atribut</a></li>
+                  <li><a href="index-materi.php#kardinalitas">3.Kardinalitas</a></li>
+                  <li><a href="index-materi.php#entitas">4.Entitas</a></li>
                   <!-- <li><a href="index-materi.html#spesialisasi">5.Spesialisasi</a></li>
                   <li><a href="index-materi.html#generalisasi">6.Generalisasi</a></li> -->
               </ul>
@@ -276,7 +304,7 @@
                     <div class="row">
                       <div class="col-md-9">
                           <h3 class="weight-500 m-b-25" >Atribut</h3>
-                          <p class="font-16 m-b-30"> ponderum dissentias theophrastus id sed, et suas homero per. Tota erat docendi in usu. Agam officiis has te. </p>
+                          <p class="font-16 m-b-30"> Bahas ragam soal materi pembelajaran atribut, mulai diskusi sekarang</p>
                           <button class="btn btn-primary bbtn-primary rounded pr-4 pl-4" id="atribut">Diskusi</button>
                       </div>
                       <div class="col-md-3">
@@ -294,7 +322,7 @@
                     <div class="row">
                       <div class="col-md-9">
                           <h3 class="weight-500 m-b-25" >Kardinalitas</h3>
-                          <p class="font-16 m-b-30"> ponderum dissentias theophrastus id sed, et suas homero per. Tota erat docendi in usu. Agam officiis has te. </p>
+                          <p class="font-16 m-b-30"> Bahas ragam soal materi pembelajaran kardinalitas, mulai diskusi sekarang </p>
                           <button class="btn btn-primary bbtn-primary rounded pr-4 pl-4" id="kardinalitas">Diskusi</button>
                       </div>
                       <div class="col-md-3">
@@ -311,9 +339,9 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col-md-9">
-                          <h3 class="weight-500 m-b-25" id="entitas">Entitas</h3>
+                          <h3 class="weight-500 m-b-25">Entitas</h3>
                           <p class="font-16 m-b-30"> ponderum dissentias theophrastus id sed, et suas homero per. Tota erat docendi in usu. Agam officiis has te. </p>
-                          <button class="btn btn-primary bbtn-primary rounded pr-4 pl-4">Diskusi</button>
+                          <button class="btn btn-primary bbtn-primary rounded pr-4 pl-4" id="entitas">Diskusi</button>
                       </div>
                       <div class="col-md-3">
                       <div class="icon-soal" >
@@ -342,49 +370,7 @@
                   </div>
                 </div>
             </div>
-            <div class="col-md-12">   1 => "a",
-   2 => "b",
-   3 => "c",
-   4 => "d",
-   5 => "e",
-   6 => 3
-),
-2 => array(
-   0 => "afaowfjo",
-   1 => "a",
-   2 => "b",
-   3 => "c",
-   4 => "d",
-   5 => "e",
-   6 => 2
-),
-);
-
-$max=2;
-
-$question=$_POST["question"] ;
-
-if ($_POST["Randon"]==0){
-        if($randomizequestions =="yes"){$randval = mt_rand(1,$max);}else{$randval=1;}
-        $randval2 = $randval;
-        }else{
-        $randval=$_POST["Randon"];
-        $randval2=$_POST["Randon"] + $question;
-                if ($randval2>$max){
-                $randval2=$randval2-$max;
-                }
-        }
-        
-$ok=$_POST["ok"] ;
-
-if ($question==0){
-        $question=0;
-        $ok=0;
-        $percentaje=0;
-        }else{
-        $percentaje= Round(100*$ok / $question);
-        }
-?>
+            <div class="col-md-12">
                 <div class="card">
                   <div class="card-body">
                     <div class="row">
@@ -416,49 +402,7 @@ if ($question==0){
 <!-- Bootstrap popper Core JavaScript -->
 <script src="plugins/vendors/bootstrap/js/popper.min.js"></script>
 <script src="plugins/vendors/bootstrap/js/bootstrap.min.js"></script>
-<script>   1 => "a",
-   2 => "b",
-   3 => "c",
-   4 => "d",
-   5 => "e",
-   6 => 3
-),
-2 => array(
-   0 => "afaowfjo",
-   1 => "a",
-   2 => "b",
-   3 => "c",
-   4 => "d",
-   5 => "e",
-   6 => 2
-),
-);
-
-$max=2;
-
-$question=$_POST["question"] ;
-
-if ($_POST["Randon"]==0){
-        if($randomizequestions =="yes"){$randval = mt_rand(1,$max);}else{$randval=1;}
-        $randval2 = $randval;
-        }else{
-        $randval=$_POST["Randon"];
-        $randval2=$_POST["Randon"] + $question;
-                if ($randval2>$max){
-                $randval2=$randval2-$max;
-                }
-        }
-        
-$ok=$_POST["ok"] ;
-
-if ($question==0){
-        $question=0;
-        $ok=0;
-        $percentaje=0;
-        }else{
-        $percentaje= Round(100*$ok / $question);
-        }
-?>
+<script>
 function toggleIcon(e) {
     $(e.target)
         .prev('.card-link')
@@ -503,6 +447,9 @@ $('.panel-group').on('shown.bs.collapse', toggleIcon);
 	  });
     $('#kardinalitas').click(function () {
 			window.location.href = 'diskusiT.php?materi=kardinalitas';
+	  });
+	  $('#entitas').click(function () {
+			window.location.href = 'diskusiT.php?materi=entitas';
 	  });
    $(function() {
        $('#myTable').DataTable();

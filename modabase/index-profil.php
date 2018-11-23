@@ -103,38 +103,65 @@
               <!-- ============================================================== -->
               <!-- Comment -->
               <!-- ============================================================== -->
-              <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-bell"></i>
+              <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle waves-effect waves-dark note" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-bell"></i>
                 <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right mailbox animated fadeIn">
                   <ul>
                     <li>
+                      <?php 
+                        $email = $_SESSION['email'];
+                        $sql = mysqli_query($conn,"SELECT * FROM `notif` where kepada = '$email' AND idtidak = '' ORDER BY idnotif DESC");
+                        $hasil =mysqli_num_rows($sql);
+                        if($hasil == 0){
+                      ?>
+                            <div class="drop-title text-secondary text-center pt-3 pb-3">Tidak ada Notifikasi</div>
+                      <?php 
+                        }
+                        else if ($hasil <= 3 ){
+                      ?>
+                      <div class="drop-title">Anda punya <span class="highlighted"><?php echo $hasil; ?> notifikasi</span> baru</div>
+                      <?php 
+                        }
+                        else{
+                      ?>
                       <div class="drop-title">Anda punya <span class="highlighted">3 notifikasi</span> baru</div>
+                        <?php }?>
                     </li>
                     <li>
                       <div class="message-center">
                         <!-- Message -->
-                        <a href="#">
+                        <?php 
+                          $i = 1;
+                          while (($data2 = mysqli_fetch_array($sql)) && ($i <=3)){
+                            $email1 = $data2['email'];
+                            $materi = $data2['materi'];
+                            $sql2 = mysqli_query($conn,"SELECT * FROM `akun` where email = '$email1'");
+                            $data1 = mysqli_fetch_array($sql2);     
+                        ?>
+                        <a href="diskusi.php">
                           <div class="row">
                               <div class="col-9">
-                                  <div class="mail-content">Alisha menyukai komentar anda</div>
+                                  <?php if($data2['iduser'] != ""){  ?>
+                                  <div class="mail-content"><?php echo $data1['namad']; ?> berkomentar pada Diskusi: <?php echo $data2['materi'];?></div> 
+                                  <?php 
+                                      }
+                                      else if ($data2['idsuka'] != ""){
+                                  ?>
+                                  <div class="mail-content"><?php echo $data1['namad']; ?> menyukai komentar anda</div>
+                                  <?php }?>
                               </div>
                               <div class="col-3">
                                   <span class="float-right text-light">11.08.2018</span>
                               </div>
                           </div>
                         </a>
-                        <a href="#">
-                            <div class="row">
-                                <div class="col-9">
-                                    <div class="mail-content">Bryan berkomentar pada Diskusi: attribut</div>
-                                </div>
-                                <div class="col-3">
-                                    <span class="float-right text-light">11.08.2018</span>
-                                </div>
-                            </div>
-                          </a>
-                          <a href="#">
+                        <?php       
+                              $i = $i +1;
+                            }
+                        ?>
+                          
+                          <!-- <a href="#">
                               <div class="row">
                                   <div class="col-9">
                                       <div class="mail-content">Alisha menyukai komentar anda</div>
@@ -143,10 +170,12 @@
                                       <span class="float-right text-light">11.08.2018</span>
                                   </div>
                               </div>
-                            </a>
+                            </a> -->
+                        
+                     
                       </div>
                     </li>
-                    <li> <a class="nav-link text-center" href="index-notif.html">Lihat semua notifikasi </a> </li>
+                    <li> <a class="nav-link text-center" href="index-notif.php">Lihat semua notifikasi </a> </li>
                   </ul>
                 </div>
               </li>
@@ -167,36 +196,37 @@
                   }
                   else { 
               ?> 
-              <li class="nav-item dropdown u-pro"> <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/imgs/users/profile-img.jpg" alt="user" class="" /></a> 
+              <li class="nav-item dropdown u-pro"> <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/imgs/users/no-pic.jpg" alt="user" class="" /></a> 
               <?php 
                   }
-              ?>
+              ?>  
+              
                 <div class="dropdown-menu dropdown-menu-right animated fadeIn">
                   <ul class="dropdown-user">
                     <li class="text-center">
                       <div class="dw-user-box">
-                          <?php 
-                            if($data['foto'] != ""){
-                          ?>
-                          <div class="u-img"><img src="assets/imgs/users/<?php echo $data['foto']?>" alt="user"></div>
-                          <?php 
-                            }
-                            else { 
-                          ?>
-                          <div class="u-img"><img src="assets/imgs/users/profile-img.jpg" alt="user"></div>
-                          <?php 
-                            }
-                          ?>
+                      
+                      <?php 
+                        if($data['foto'] != ""){
+                      ?>
+                      <div class="u-img"><img src="assets/imgs/users/<?php echo $data['foto']?>" alt="user"></div>
+                      <?php 
+                          }
+                          else { 
+                      ?>
+                      <div class="u-img"><img src="assets/imgs/users/no-pic.jpg" alt="user"></div>
+                      <?php 
+                          }
+                      ?>
 
                         <div class="clearfix"></div>
-                        <div class="u-text">
+                        <div class="u-text p-0 pt-3">
                           <h4><?php echo $data['namad']?></h4>
                         </div>
                       </div>
                     </li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="index-profil.php"><i class="fas fa-user mr-1"></i> My Profile</a></li>
-                    <li><a href="#"><i class="fas fa-cog mr-1"></i> Settings</a></li>
+                    <li><a href="index-profil.php"><i class="fas fa-cog mr-1"></i>Pengaturan</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="Logout.php"><i class="fas fa-sign-in-alt mr-1"></i> Logout</a></li>
                   </ul>
@@ -230,12 +260,10 @@
             </li>
             <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="flaticon-forms"></i><span class="hide-menu">Materi</span></a>
               <ul aria-expanded="false" class="collapse">
-                  <li><a href="index-materi.html#pengenalan">1.Pengenalan</a></li>
-                  <li><a href="index-materi.html#atribut">2.Atribut</a></li>
-                  <li><a href="index-materi.html#kardinalitas">3.Kardinalitas</a></li>
-                  <li><a href="index-materi.html#entitas">4.Entitas</a></li>
-                  <li><a href="index-materi.html#spesialisasi">5.Spesialisasi</a></li>
-                  <li><a href="index-materi.html#generalisasi">6.Generalisasi</a></li>
+                  <li><a href="index-materi.php#pengenalan">1.Pengenalan</a></li>
+                  <li><a href="index-materi.php#atribut">2.Atribut</a></li>
+                  <li><a href="index-materi.php#kardinalitas">3.Kardinalitas</a></li>
+                  <li><a href="index-materi.phpl#entitas">4.Entitas</a></li>
               </ul>
             </li>
             <li><a href="index-soal.php"><i class="flaticon-pencil-edit-button"></i><span class="hide-menu">Soal</span></a></li>
@@ -277,7 +305,7 @@
                           }
                           else { 
                       ?>
-                      <img src="assets/imgs/users/profile-img.jpg" class="img-fluid"  alt="" title="" >
+                      <img src="assets/imgs/users/no-pic.jpg" class="img-fluid"  alt="" title="" >
                       <?php 
                           }
                       ?>
@@ -293,11 +321,11 @@
                         <div class="row form-group m-b-10">
                           <div class="col">
                           <label class="col col-form-label pl-0">Nama Depan</label>
-                            <input type="text" class="form-control" placeholder="Nama Depan" id="namad">
+                            <input type="text" class="form-control" placeholder="Nama Depan" id="namad" name="namad">
                           </div>
                           <div class="col">
                           <label class="col col-form-label pl-0">Nama Belakang</label>
-                            <input type="text" class="form-control" placeholder="Nama Belakang" id="namab">
+                            <input type="text" class="form-control" placeholder="Nama Belakang" id="namab" name="namab">
                           </div>
                         </div>
                             <div class="form-group row m-b-10">

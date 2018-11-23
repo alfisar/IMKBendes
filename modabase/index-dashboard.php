@@ -4,7 +4,10 @@
       if (!isset($_POST['email']) && !isset($_SESSION['email'])) {
       header("Location: index-sign.php");
       }
+    //   $email = $_SESSION['email'];
+    //   echo"<script>alert('$email');</script>";
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -113,7 +116,12 @@
                         $email = $_SESSION['email'];
                         $sql = mysqli_query($conn,"SELECT * FROM `notif` where kepada = '$email' AND idtidak = '' ORDER BY idnotif DESC");
                         $hasil =mysqli_num_rows($sql);
-                        if ($hasil <= 3 ){
+                        if($hasil == 0){
+                      ?>
+                            <div class="drop-title text-secondary text-center pt-3 pb-3">Tidak ada Notifikasi</div>
+                      <?php 
+                        }
+                        else if ($hasil <= 3 ){
                       ?>
                       <div class="drop-title">Anda punya <span class="highlighted"><?php echo $hasil; ?> notifikasi</span> baru</div>
                       <?php 
@@ -255,10 +263,10 @@
             </li>
             <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="flaticon-forms"></i><span class="hide-menu">Materi</span></a>
               <ul aria-expanded="false" class="collapse">
-                  <li><a href="index-materi.html#pengenalan">1.Pengenalan</a></li>
-                  <li><a href="index-materi.html#atribut">2.Atribut</a></li>
-                  <li><a href="index-materi.html#kardinalitas">3.Kardinalitas</a></li>
-                  <li><a href="index-materi.html#entitas">4.Entitas</a></li>
+                  <li><a href="index-materi.php#pengenalan">1.Pengenalan</a></li>
+                  <li><a href="index-materi.php#atribut">2.Atribut</a></li>
+                  <li><a href="index-materi.php#kardinalitas">3.Kardinalitas</a></li>
+                  <li><a href="index-materi.php#entitas">4.Entitas</a></li>
                   <!-- <li><a href="index-materi.html#spesialisasi">5.Spesialisasi</a></li>
                   <li><a href="index-materi.html#generalisasi">6.Generalisasi</a></li> -->
               </ul>
@@ -288,49 +296,37 @@
           </div>
         </div>
           <!--tabpanel-->
+          <hr>
+          <h3>Hasil latihan soal</h3>
           <div class="tab-pane p-0 active" id="pro-statistics" role="tabpanel">
             <div class="row">
-              <div class="col-lg-4 col-md-6">
+              <div class="col-md-6">
                 <div class="card">
-                  <div class="card-body">
+                  <div class="card-body text-center">
+                   
+                      <h4 class="py-4">Latihan Soal 1</h4>
                     <div class="p-10 no-block text-center">
-                      <div class="align-slef-center">
-                        <h2 class="m-b-0">68%</h2>
-                        <h6 class="text-light m-b-25">Tasks done</h6>
-                      </div>
-                      <div class="progress">
-                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%; height:5px;"> <span class="sr-only">80% Complete</span></div>
-                      </div>
+  					  <div class="pt-1 pb-3 no-block">
+					    <div class="align-self-center">
+						<input data-plugin="knob" class="dial1"  data-width="90" data-height="90"  data-linecap="round" data-fgColor="#4886ff" data-thickness=".2" value="0" />
+						</div>
+					 </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4 col-md-6">
+              <div class="col-md-6">
                 <div class="card">
-                  <div class="card-body">
+                  <div class="card-body text-center">
+                    
+                      <h4 class="py-4">Latihan Soal 2</h4>
                     <div class="p-10 no-block text-center">
-                      <div class="align-slef-center">
-                        <h2 class="m-b-0">21%</h2>
-                        <h6 class="text-light m-b-25">In process Tasks</h6>
-                      </div>
-                      <div class="progress">
-                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width:30%; height:5px;"> <span class="sr-only">30% Complete</span></div>
-                      </div>
+  					  <div class="pt-1 pb-3 no-block">
+					    <div class="align-self-center">
+						<input data-plugin="knob" class="dial2"  data-width="90" data-height="90"  data-linecap="round" data-fgColor="#4886ff" data-thickness=".2" value="0" />
+						</div>
+					 </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="p-10 no-block text-center">
-                      <div class="align-slef-center">
-                        <h2 class="m-b-0">11%</h2>
-                        <h6 class="text-light m-b-25">Tasks done</h6>
-                      </div>
-                      <div class="progress">
-                        <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:20%; height:5px;"> <span class="sr-only">20% Complete</span></div>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -404,15 +400,58 @@ $('#slimtest1, #slimtest2, #slimtest3, #slimtest4').perfectScrollbar();
 
 </script>
 <script>
-        $(".dial").knob();
-
-        $({animatedVal: 0}).animate({animatedVal: 80}, {
+        <?php 
+            
+            $query2 = mysqli_query($conn,"SELECT * FROM `score` WHERE email = '".$_SESSION['email']."' AND latihansoal = '1'");
+            $data1 = mysqli_fetch_array($query2);
+        ?> 
+        $(".dial1").knob();
+        <?php
+            if ($data1['hasil'] == ""){
+        ?>
+        $({animatedVal: 0}).animate({animatedVal: 0 }, {
+        <?php 
+            }
+            else{
+        ?>
+        $({animatedVal: 0}).animate({animatedVal: <?php echo $data1['hasil']; ?> }, {
+        <?php  
+            } 
+        ?>
             duration: 2000,
             easing: "swing",
             step: function() {
-                $(".dial").val(Math.ceil(this.animatedVal)).trigger("change");
+                $(".dial1").val(Math.ceil(this.animatedVal)).trigger("change");
             }
         });
+        
+        <?php 
+            
+            $query2 = mysqli_query($conn,"SELECT * FROM `score` WHERE email = '".$_SESSION['email']."' AND latihansoal = '2'");
+            $data2 = mysqli_fetch_array($query2);
+            // $hasil2 = $data['hasil'];
+            // echo"alert('$hasil');";
+        ?> 
+        $(".dial2").knob();
+        <?php
+            if ($data2['hasil'] == ""){
+        ?>
+        $({animatedVal: 0}).animate({animatedVal: 0 }, {
+        <?php 
+            }
+            else{
+        ?>
+        $({animatedVal: 0}).animate({animatedVal: <?php echo $data2['hasil']; ?> }, {
+        <?php  
+            } 
+        ?>
+            duration: 2000,
+            easing: "swing",
+            step: function() {
+                $(".dial2").val(Math.ceil(this.animatedVal)).trigger("change");
+            }
+        });
+        
     </script>
 
 </body>

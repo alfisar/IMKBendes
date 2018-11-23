@@ -69,7 +69,7 @@
         <!-- Logo -->
         <!-- ============================================================== -->
         <div class="navbar-header"> 
-            <a class="navbar-brand" href="index-dashboard.html">
+            <a class="navbar-brand" href="index-dashboard.php">
                 <!-- Logo icon -->
                 <div><h3>M<span>odabase</h3></span></div>
                 <!--End Logo icon -->
@@ -256,16 +256,14 @@
         <nav class="sidebar-nav">
           <ul id="sidebarnav">
             <li class="clearfix"></li>
-            <li class="active"> <a class="waves-effect waves-dark" href="#" aria-expanded="false"><i class="flaticon-desktop-computer-screen-with-rising-graph"></i><span class="hide-menu">Dashboard</span></a>
+            <li class="active"> <a class="waves-effect waves-dark" href="index-dashboard.php" aria-expanded="false"><i class="flaticon-desktop-computer-screen-with-rising-graph"></i><span class="hide-menu">Dashboard</span></a>
             </li>
             <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="flaticon-forms"></i><span class="hide-menu">Materi</span></a>
               <ul aria-expanded="false" class="collapse">
-                  <li><a href="index-materi.html#pengenalan">1.Pengenalan</a></li>
-                  <li><a href="index-materi.html#atribut">2.Atribut</a></li>
-                  <li><a href="index-materi.html#kardinalitas">3.Kardinalitas</a></li>
-                  <li><a href="index-materi.html#entitas">4.Entitas</a></li>
-                  <li><a href="index-materi.html#spesialisasi">5.Spesialisasi</a></li>
-                  <li><a href="index-materi.html#generalisasi">6.Generalisasi</a></li>
+                  <li><a href="index-materi.php#pengenalan">1.Pengenalan</a></li>
+                  <li><a href="index-materi.php#atribut">2.Atribut</a></li>
+                  <li><a href="index-materi.php#kardinalitas">3.Kardinalitas</a></li>
+                  <li><a href="index-materi.phpl#entitas">4.Entitas</a></li>
               </ul>
             </li>
             <li><a href="index-soal.php"><i class="flaticon-pencil-edit-button"></i><span class="hide-menu">Soal</span></a></li>
@@ -300,14 +298,21 @@
                           <li>
                             <div class="message-center">
                               <!-- Message -->
-                              <?php 
+                            <?php 
                                     $email = $_SESSION['email'];
                                     $sql = mysqli_query($conn,"SELECT * FROM `notif` where kepada = '$email' AND idtidak = '' ORDER BY idnotif DESC");
                                      $i = 1;
+                                    if($hasilnotif == 0) {
+                                ?>
+                                        <h3 class="text-center text-secondary pt-5 pb-3">Tidak ada notifikasi</h3>
+                                <?php
+                                   }
                                     while ($data2 = mysqli_fetch_array($sql)){
                                         $email1 = $data2['email'];
                                         $sql1 = mysqli_query($conn,"SELECT * FROM `akun` where email = '$email1'");
-                                        $data1 = mysqli_fetch_array($sql1);     
+                                        $data1 = mysqli_fetch_array($sql1);   
+                                        $hasilnotif =mysqli_num_rows($sql);
+                                        
                             ?>
                               <a href="diskusi.php">
                                 <div class="row">

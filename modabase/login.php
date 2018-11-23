@@ -10,7 +10,7 @@
 		}
 		else{
 			$_SESSION['j'] = 1;
-			header("Location: index-sign.php");
+			header("Location: index.php");
 		}
 		
 	}

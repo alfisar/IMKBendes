@@ -1,9 +1,20 @@
-<?php    
+<?php 
     session_start();
+      include 'koneksi.php';  
       include 'dataprofil.php';
       if (!isset($_POST['email']) && !isset($_SESSION['email'])) {
       header("Location: index-sign.php");
+      }
+      if(!isset ($_SESSION['index'])){
+            $_SESSION['index'] = 1;
+      }
+    if(!isset ($_SESSION['latihan'])){
+        $_SESSION['latihan'] = $_GET['latihan'];
     }
+    $hasil2 = $_SESSION['latihan'];
+    // echo"<script>alert('$hasil2');</script>";
+    // unset($_SESSION['hasil']); 
+    //         unset($_SESSION['index']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -117,43 +128,294 @@
 	<div class="container mt-5">
 		<div class="row">
 			<div class="col-md-12">
-                <?php
-                    include 'koneksi.php';
-                    $sql = mysqli_query($conn,"SELECT * FROM `soal` where materi = '".$_GET['soal']."'");
-                    $hasil = mysqli_num_rows($sql);
-                    $benar = 0;
-                    $i = 1;
-                    while  ($row = mysqli_fetch_array($sql)){
-                          $jawaban = $row['jawaban'];
-                    
-                ?>
 			    <div class="card text-center">
-				    <div class="card-header" style="background-color: #3fc6bd ">
+				  <div class="card-header" style="background-color: #3fc6bd ">
 				  	<!-- <a href="your link here"> <i class="fas fa-times" style="float: left; color: white;"></i></a>
 				    <h6 style="color: white">Materi Atribut</h6>
 						<h6 style="float: right; color: white">1/5</h6> -->
 						<div class="row">
 							<div class="col"><a href="#" onclick="checkOut()"> <i class="fas fa-times" style="float: left; color: white;"></i></a></div>
-							<div class="col text-center"><h6 style="color: white">Materi <?php echo $_GET['soal']?></h6></div>
-							<div class="col"><h6 style="float: right; color: white"><?php echo $i++;?>/5</h6> </div>
-						</div>
-                    
-                    </div>
-                    <div class="card-body">
-                        <h2 class="card-title mt-3" >Pilihan Ganda</h2>
-                        <p class="card-text mb-5" style="font-size: 18pt"><?php echo $row['soal']; ?></p>
-                        <div class="mt-5 mb-4">    
-                            <button class="btn btn-outline-primary w-25 mr-3 p-3" value="<?php echo $row['pilihan1']; ?>" onclick="<?php $benar =?>hitung(this,<?php echo $jawaban;?>) <?php ;?>" > <?php echo $row['pilihan1']; ?> </button>
-                            <button class="btn btn-outline-primary w-25 ml-3 p-3" value="<?php echo $row['pilihan2']; ?>" onclick="<?php $benar =?>hitung(this,<?php echo $jawaban;?>) <?php ;?>" > <?php echo $row['pilihan2']; ?> </button>
+                            <?php 
+                                if($_SESSION['latihan']==1){
+                            ?>
+                                <div class="col text-center"><h6 style="color: white">Materi Atribut dan Kardinalitas</h6></div>
+							    <div class="col"><h6 style="float: right; color: white"><?php echo $_SESSION['index']; ?>/10</h6> </div>
+                            <?php 
+                                }
+                                else {
+                            ?>
+                                <div class="col text-center"><h6 style="color: white">Materi Entitas</h6></div>
+                                <div class="col"><h6 style="float: right; color: white"><?php echo $_SESSION['index']; ?>/5</h6> </div>
+                            <?php 
+                                }
+                            ?>
                         </div>
-                        <div class="mt-4 mb-5">    
-                            <button class="btn btn-outline-primary w-25 mr-3 p-3" value="<?php echo $row['pilihan3']; ?>" onclick="<?php $benar =?>hitung(this,<?php echo $jawaban;?>) <?php ;?>" > <?php echo $row['pilihan3']; ?> </button>
-                            <button class="btn btn-outline-primary w-25 ml-3 p-3" value="<?php echo $row['pilihan4']; ?>" onclick="<?php $benar =?>hitung(this,<?php echo $jawaban;?>) <?php ;?>" > <?php echo $row['pilihan4']; ?> </button>
-                        </div>
-                    </div>
-				</div>
+				  </div>
                 <?php
-                    };
+                    // $hasil2 = $_SESSION['index'];
+                    // echo"<script>alert('$hasil2');</script>";
+                    if(($_SESSION['latihan']==1)&&($_SESSION['index']==1)){
+                ?>
+				<div class="card-body">
+					<h2 class="card-title mt-3">Pilihan Ganda</h2>
+					<p class="card-text mb-5" style="font-size: 18pt">Apa yg dimaksud dengan atribut?</p>
+					<div class="mt-5 mb-4">
+						<a href="hitung.php?jawaban=benar"><button class="btn btn-outline-primary w-25 mr-3 p-3">A. karakteristik dari entitas atau relationship, yang menyediakan penjelasan detail tentang entitas atau relationship.</button></a>
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 ml-3 p-3">B. profesional sistem untuk berkomunikasi dengan pemakai eksekutif tingkat tinggi dalam perusahaan atau organisasi yang tidak tertarik pada pelaksanaan operasi sistem sehari-hari</button></a>
+					</div>
+					<div class="mt-4 mb-5">
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 mr-3 p-3">C. Partisipasi entitas pada suatu relasi</button></a>
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 ml-3 p-3">D. Penunjuk untuk menentukan jumlah entitas</button></a>
+					</div>
+                 </div>
+                </div>
+                <!--</div>-->
+                <?php
+                    }
+                    else if(($_SESSION['latihan']==1)&&($_SESSION['index']==2)){
+                ?>
+                <div class="card-body">
+					<h2 class="card-title mt-3">Pilihan Ganda</h2>
+					<p class="card-text mb-5" style="font-size: 18pt">Berdasarkan karakteristik atau sifatnya, atribut dapat dibagi menjadi beberapa bagian, yaitu </p>
+					<div class="mt-5 mb-4">
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 mr-3 p-3">A.Simple attribute dan composite attribute. </button></a>
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 ml-3 p-3">B. Single valued attribute dan multi valued attribute.</button></a>
+					</div>
+					<div class="mt-4 mb-5">
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 mr-3 p-3">C. Mandatory attribute</button></a>
+						<a href="hitung.php?jawaban=benar"><button class="btn btn-outline-primary w-25 ml-3 p-3">D. Semua benar</button></a>
+					</div>
+				</div>
+                <!--</div>-->
+                <?php
+                    }
+                    else if(($_SESSION['latihan']==1)&&($_SESSION['index']==3)){
+                ?>
+                <div class="card-body">
+					<h2 class="card-title mt-3">Pilihan Ganda</h2>
+					<p class="card-text mb-5" style="font-size: 18pt">Pilih pernyataan yg benar </p>
+					<div class="mt-5 mb-4">
+						<a href="hitung.php?jawaban=benar"><button class="btn btn-outline-primary w-25 mr-3 p-3">A. Derived Attribute atau Atribut Turunan adalah atribut dapat diturunkan dari atribut atau tabel lain yang berhubungan.</button></a>
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 ml-3 p-3">B. Derived Atribut merupakan atribut yg tidak dapat diturunkan</button></a>
+					</div>
+					<div class="mt-4 mb-5">
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 mr-3 p-3">C. Derived atribut merupakan kunci utama karena sering dijadikan acuan untuk mencari informasi</button></a>
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 ml-3 p-3">D. Derived atribut merupakan bagian dari single atribut</button></a>
+					</div>
+				</div>
+                <!--</div>-->
+                <?php
+                    }
+                    else if(($_SESSION['latihan']==1)&&($_SESSION['index']==4)){
+                ?>
+                <div class="card-body">
+					<h2 class="card-title mt-3">Pilihan Ganda</h2>
+					<p class="card-text mb-5" style="font-size: 18pt">Atribut dapat diidentifikasi berdasarkan dua jenis yaitu </p>
+					<div class="mt-5 mb-4">
+						<a href="hitung.php?jawaban=benar"><button class="btn btn-outline-primary w-25 mr-3 p-3">A. dentifier dan Descriptor </button></a>
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 ml-3 p-3">B. Identifier dan Valuable aspect</button></a>
+					</div>
+					<div class="mt-4 mb-5">
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 mr-3 p-3">C. Descriptor dan Cardinality</button></a>
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 ml-3 p-3">D. Semua salah</button></a>
+					</div>
+				</div>
+                <!--</div>-->
+                <?php
+                    }
+                    else if(($_SESSION['latihan']==1)&&($_SESSION['index']==5)){
+                ?>
+                <div class="card-body">
+					<h2 class="card-title mt-3">Pilihan Ganda</h2>
+					<p class="card-text mb-5" style="font-size: 18pt">Pada transformasi ER ke skema relasional terdapat atribut yg dapat memengaruhi proses tersebut, mana atribut yg dimaksud oleh pernyataan diatas </p>
+					<div class="mt-5 mb-4">
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 mr-3 p-3">A. Atribut komposit</button></a>
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 ml-3 p-3">B. Atribut multivalues</button></a>
+					</div>
+					<div class="mt-4 mb-5">
+						<a href="hitung.php?jawaban=benar"><button class="btn btn-outline-primary w-25 mr-3 p-3">C. a dan b benar</button></a>
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 ml-3 p-3">D. semua salah</button></a>
+					</div>
+				</div>
+                </div>
+                 <?php
+                    }
+                    else if(($_SESSION['latihan']==1)&&($_SESSION['index']==6)){
+                ?>
+                <div class="card-body">
+					<h2 class="card-title mt-3">Pilihan Ganda</h2>
+					<p class="card-text mb-5" style="font-size: 18pt">Menentukan jumlah entity yang bersesuaian dengan entity yang lain</p>
+					<div class="mt-5 mb-4">
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 mr-3 p-3">A. Multivalue Atribut</button></a>
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 ml-3 p-3">B. Relationship</button></a>
+					</div>
+					<div class="mt-4 mb-5">
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 mr-3 p-3">C. Participant Constraint</button></a>
+						<a href="hitung.php?jawaban=benar"><button class="btn btn-outline-primary w-25 ml-3 p-3">D. Mapping Cardinality</button></a>
+					</div>
+				</div>
+                </div>
+                 <?php
+                    }
+                    else if(($_SESSION['latihan']==1)&&($_SESSION['index']==7)){
+                ?>
+                <div class="card-body">
+					<h2 class="card-title mt-3">Pilihan Ganda</h2>
+					<p class="card-text mb-5" style="font-size: 18pt">Berikut jenis jenis mapping cardinality</p>
+					<div class="mt-5 mb-4">
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 mr-3 p-3">A.One – to – One</button></a>
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 ml-3 p-3">B. One – to – Many</button></a>
+					</div>
+					<div class="mt-4 mb-5">
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 mr-3 p-3">C. Many – to – Many</button></a>
+						<a href="hitung.php?jawaban=benar"><button class="btn btn-outline-primary w-25 ml-3 p-3">D. Semua benar</button></a>
+					</div>
+				</div>
+                </div>
+                <?php
+                    }
+                    else if(($_SESSION['latihan']==1)&&($_SESSION['index']==8)){
+                ?>
+                <div class="card-body">
+					<h2 class="card-title mt-3">Pilihan Ganda</h2>
+                    <p class="card-text mb-5" style="font-size: 18pt">Pada transformasi ER ke skema relasi, terdapat pengaruh kardinalitas untuk relasi biner. Susun langkah umum transformasi relasi biner berikut dengan benar: </p>
+                    <ol class="text-left">
+                        <li>Set entitas sebagai child</li>
+                        <li>Set satu entitas sebagai parent</li>
+                        <li>Tambahkan PK parent ke child sebagai PK</li>
+                        <li>Atribut yg berada pada relasi tambahkan ke tabel child</li>
+                    </ol>
+					<div class="mt-5 mb-4">
+						<a href="hitung.php?jawaban=benar"><button class="btn btn-outline-primary w-25 mr-3 p-3">A. 2-1-3-4</button></a>
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 ml-3 p-3">B. 1-2-3-4</button></a>
+					</div>
+					<div class="mt-4 mb-5">
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 mr-3 p-3">C. 3-4-1-2</button></a>
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 ml-3 p-3">D. 1-3-2-4</button></a>
+					</div>
+				</div>
+                </div>
+                 <?php
+                    }
+                    else if(($_SESSION['latihan']==1)&&($_SESSION['index']==9)){
+                ?>
+                <div class="card-body">
+					<h2 class="card-title mt-3">Pilihan Ganda</h2>
+					<p class="card-text mb-5" style="font-size: 18pt">Apa yang dimaksud dengan kardinalitas?</p>
+					<div class="mt-5 mb-4">
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 mr-3 p-3">A. Menunjukan jumlah maksimum entitas yang dapat berelasi dengan entitas pada himpunan entitas yang lain</button></a>
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 ml-3 p-3">B. Derajat dari sebuah relasi data</button></a>
+					</div>
+					<div class="mt-4 mb-5">
+						<a href="hitung.php?jawaban=benar"><button class="btn btn-outline-primary w-25 mr-3 p-3">C. A dan b benar</button></a>
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 ml-3 p-3">D. Semua salah</button></a>
+					</div>
+				</div>
+                </div>
+                 <?php
+                    }
+                    else if(($_SESSION['latihan']==1)&&($_SESSION['index']==10)){
+                ?>
+                <div class="card-body">
+					<h2 class="card-title mt-3">Pilihan Ganda</h2>
+					<p class="card-text mb-5" style="font-size: 18pt">Entitas dengan kardinalitas 1 diidentifikasi sebagai</p>
+					<div class="mt-5 mb-4">
+						<a href="hitung.php?jawaban=benar"><button class="btn btn-outline-primary w-25 mr-3 p-3">A. Parent</button></a>
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 ml-3 p-3">B. Child</button></a>
+					</div>
+					<div class="mt-4 mb-5">
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 mr-3 p-3">C. Succesor</button></a>
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 ml-3 p-3">D. Identifier</button></a>
+					</div>
+				</div>
+                </div>
+                <?php
+                    }
+                    else if(($_SESSION['latihan']==2)&&($_SESSION['index']==1)){
+                ?>
+                <div class="card-body">
+					<h2 class="card-title mt-3">Pilihan Ganda</h2>
+					<p class="card-text mb-5" style="font-size: 18pt">Suatu kumpulan object atau sesuatu yang dapat dibedakan atau dapat diidentifikasikan secara unik</p>
+					<div class="mt-5 mb-4">
+						<a href="hitung.php?jawaban=benar"><button class="btn btn-outline-primary w-25 mr-3 p-3">A. Entitas</button></a>
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 ml-3 p-3">B. Atribut</button></a>
+					</div>
+					<div class="mt-4 mb-5">
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 mr-3 p-3">C. Indicator</button></a>
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 ml-3 p-3">D. Cardinality</button></a>
+					</div>
+				</div>
+                </div>
+                <?php
+                    }
+                    else if(($_SESSION['latihan']==2)&&($_SESSION['index']==2)){
+                ?>
+                <div class="card-body">
+					<h2 class="card-title mt-3">Pilihan Ganda</h2>
+					<p class="card-text mb-5" style="font-size: 18pt">Entity set yang dependent terhadap strong entity set digambarkan dengan :</p>
+					<div class="mt-5 mb-4">
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 mr-3 p-3">A. Box</button></a>
+						<a href="hitung.php?jawaban=benar"><button class="btn btn-outline-primary w-25 ml-3 p-3">B. Persegi panjang bertumpuk</button></a>
+					</div>
+					<div class="mt-4 mb-5">
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 mr-3 p-3">C. Lingkaran</button></a>
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 ml-3 p-3">D. Bujur sangkar</button></a>
+					</div>
+				</div>
+                </div>
+                <?php
+                    }
+                    else if(($_SESSION['latihan']==2)&&($_SESSION['index']==3)){
+                ?>
+                <div class="card-body">
+					<h2 class="card-title mt-3">Pilihan Ganda</h2>
+					<p class="card-text mb-5" style="font-size: 18pt">Weak entity digambarkan dengan...</p>
+					<div class="mt-5 mb-4">
+						<a href="hitung.php?jawaban=benar"><button class="btn btn-outline-primary w-25 mr-3 p-3">A. Persegi panjang bertumpuk</button></a>
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 ml-3 p-3">B. Garis</button></a>
+					</div>
+					<div class="mt-4 mb-5">
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 mr-3 p-3">C. Persegi panjang</button></a>
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 ml-3 p-3">D. Lingkaran</button></a>
+					</div>
+				</div>
+                </div>
+                <?php
+                    }
+                    else if(($_SESSION['latihan']==2)&&($_SESSION['index']==4)){
+                ?>
+                <div class="card-body">
+					<h2 class="card-title mt-3">Pilihan Ganda</h2>
+					<p class="card-text mb-5" style="font-size: 18pt">Manakah yang bukan merupakan pengaruh entitas pada transformasi ER ke skema relasional?</p>
+					<div class="mt-5 mb-4">
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 mr-3 p-3">A. Entitas asosiatif</button></a>
+						<a href="hitung.php?jawaban=benar"><button class="btn btn-outline-primary w-25 ml-3 p-3">B. Entitas disosiatif</button></a>
+					</div>
+					<div class="mt-4 mb-5">
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 mr-3 p-3">C. Entitas kasus generalisasi dan spesialisasi</button></a>
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 ml-3 p-3">D. Entitas agregasi</button></a>
+					</div>
+				</div>
+                </div>
+                <?php
+                    }
+                    else if(($_SESSION['latihan']==2)&&($_SESSION['index']==5)){
+                ?>
+                <div class="card-body">
+					<h2 class="card-title mt-3">Pilihan Ganda</h2>
+					<p class="card-text mb-5" style="font-size: 18pt">Pada skema relasional atribut disebut sebagai</p>
+					<div class="mt-5 mb-4">
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 mr-3 p-3">A. Tabel</button></a>
+						<a href="hitung.php?jawaban=benar"><button class="btn btn-outline-primary w-25 ml-3 p-3">B. Kolom</button></a>
+					</div>
+					<div class="mt-4 mb-5">
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 mr-3 p-3">C. Cell</button></a>
+						<a href="hitung.php"><button class="btn btn-outline-primary w-25 ml-3 p-3">D. Value</button></a>
+					</div>
+				</div>
+                </div>
+                <?php
+                    }
                 ?>
 			</div>
 		</div>
@@ -209,14 +471,6 @@ $('#slimtest1, #slimtest2, #slimtest3, #slimtest4').perfectScrollbar();
 
 <script>
 
-	function hitung(btn, ans) {
-		if(btn == ans){
-			return true;
-		}else{
-			return false;
-		}
-	}
-	
 	function checkOut(){
 		$('#checkoutLayer').fadeIn();
 		$('#checkoutCard').fadeIn();
@@ -234,7 +488,7 @@ $('#slimtest1, #slimtest2, #slimtest3, #slimtest4').perfectScrollbar();
 		$('#yesExit').click(function(e){
 			$('#checkoutLayer').fadeOut();
 			$('#checkoutCard').fadeOut();
-			window.location.href="index-dashboard.html";
+			window.location.href="index-dashboard.php";
 			e.preventDefault();	
 		});
 		
